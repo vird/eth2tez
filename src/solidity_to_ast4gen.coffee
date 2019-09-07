@@ -2,10 +2,6 @@ config = require './config'
 Type = require 'type'
 ast = require './ast'
 
-pre_op_map =
-  '+'   : 'PLUS'
-  '-'   : 'MINUS'
-
 bin_op_map =
   '+'   : 'ADD'
   '-'   : 'SUB'
@@ -36,6 +32,7 @@ bin_op_map =
 un_op_map =
   '-' : 'MINUS'
   '+' : 'PLUS'
+  '~' : 'BIT_NOT'
 
 class Context
   current_contract  : null
@@ -181,7 +178,7 @@ module.exports = (root)->
       # ###################################################################################################
       when 'Return'
         ret = new ast.Ret_multi
-        ret.t_list.push walk_exec ast_tree.expression
+        ret.t_list.push walk_exec ast_tree.expression, ctx
         ret
       
       else
@@ -197,12 +194,11 @@ module.exports = (root)->
         return if name == 'experimental'
         throw new Error("unknown pragma '#{name}'")
       when "VariableDeclaration"
-        if ast_tree.value
-          throw new Error("ast_tree.value not implemented")
-        # ctx.current_contract.var_list.push 
         ret = new ast.Var_decl
+        ret._const = ast_tree.constant
         ret.name = ast_tree.name
         ret.type = new Type ast_tree.typeDescriptions.typeIdentifier
+        ret.assign_value = walk_exec ast_tree.value, ctx
         # ast_tree.typeName
         # storage : ast_tree.storageLocation
         # state   : ast_tree.stateVariable

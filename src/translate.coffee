@@ -36,6 +36,7 @@ module = @
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"
   PLUS    : (a)->"+(#{a})"
+  BIT_NOT : (a)->"not (#{a})"
 
 smart_bracket = (t)->
   if t[0] == '(' and t[t.length-1] == ')'

@@ -39,7 +39,7 @@ translate_type = (type)->
       if ctx.var_hash[ast.name]
         ast.name
       else
-        "{config.contractStorage}.#{ast.name}"
+        "#{config.contractStorage}.#{ast.name}"
     
     when 'Bin_op'
       _a = gen ast.a, opt, ctx

@@ -2,9 +2,13 @@
   "name": "eth2tez",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "install": "iced -o lib -c src",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "eth2tez": "bin/eth2tez"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,17 @@
   "bugs": {
     "url": "https://github.com/vird/eth2tez/issues"
   },
-  "homepage": "https://github.com/vird/eth2tez#readme"
+  "homepage": "https://github.com/vird/eth2tez#readme",
+  "devDependencies": {
+    "coveralls": "^2.13.0",
+    "iced-coffee-coverage": "^1.0.21",
+    "iced-coffee-script": "^108.0.11",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "fy": "github:hu2prod/fy",
+    "iced-runtime": "^1.0.3",
+    "solc": "^0.5.11"
+  }
 }

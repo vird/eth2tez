@@ -2,6 +2,7 @@ config = require './config'
 require 'fy/codegen'
 module = @
 
+
 @bin_op_name_map =
   ADD : '+'
   SUB : '-'
@@ -26,6 +27,10 @@ module = @
   BIT_AND : (a, b)-> "bitwise_and(#{a}, #{b})"
   BIT_OR  : (a, b)-> "bitwise_or(#{a}, #{b})"
   BIT_XOR : (a, b)-> "bitwise_xor(#{a}, #{b})"
+
+@un_op_name_cb_map =
+  MINUS   : (a)->"-(#{a})"
+  PLUS    : (a)->"+(#{a})"
 
 smart_bracket = (t)->
   if t[0] == '(' and t[t.length-1] == ')'
@@ -98,7 +103,13 @@ type2default_value = (type)->
         cb(_a, _b)
       else
         throw new Error "Unknown/unimplemented bin_op #{ast.op}"
-      
+    
+    when "Un_op"
+      if cb = module.un_op_name_cb_map[ast.op]
+        cb gen ast.a, opt, ctx
+      else
+        throw new Error "Unknown/unimplemented un_op #{ast.op}"
+    
     when "Const"
       if ast.type.main == 'string'
         JSON.stringify ast.val

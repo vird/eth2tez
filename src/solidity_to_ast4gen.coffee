@@ -2,6 +2,10 @@ config = require './config'
 Type = require 'type'
 ast = require './ast'
 
+pre_op_map =
+  '+'   : 'PLUS'
+  '-'   : 'MINUS'
+
 bin_op_map =
   '+'   : 'ADD'
   '-'   : 'SUB'
@@ -22,6 +26,10 @@ bin_op_map =
   '<'  : 'LT'
   '>=' : 'GTE'
   '<=' : 'LTE'
+
+un_op_map =
+  '-' : 'MINUS'
+  '+' : 'PLUS'
 
 class Context
   current_contract  : null
@@ -85,6 +93,14 @@ module.exports = (root)->
           throw new Error("unknown bin_op #{ast_tree.operator}")
         ret.a = walk_exec ast_tree.leftExpression, ctx
         ret.b = walk_exec ast_tree.rightExpression, ctx
+        ret
+      
+      when 'UnaryOperation'
+        ret = new ast.Un_op
+        ret.op = un_op_map[ast_tree.operator]
+        if !ret.op
+          throw new Error("unknown un_op #{ast_tree.operator}")
+        ret.a = walk_exec ast_tree.subExpression, ctx
         ret
       
       when 'FunctionCall'

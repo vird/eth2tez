@@ -217,8 +217,6 @@ type2default_value = (type)->
       type = translate_type ast.type
       if ast.assign_value
         val = gen ast.assign_value, opt, ctx
-        if type == 'nat'
-          val = "nat(#{val})"
         """
         const #{ast.name} : #{type} = #{val}
         """

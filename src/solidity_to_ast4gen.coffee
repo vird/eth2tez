@@ -198,7 +198,8 @@ module.exports = (root)->
         ret._const = ast_tree.constant
         ret.name = ast_tree.name
         ret.type = new Type ast_tree.typeDescriptions.typeIdentifier
-        ret.assign_value = walk_exec ast_tree.value, ctx
+        if ast_tree.value
+          ret.assign_value = walk_exec ast_tree.value, ctx
         # ast_tree.typeName
         # storage : ast_tree.storageLocation
         # state   : ast_tree.stateVariable

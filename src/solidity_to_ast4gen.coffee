@@ -51,6 +51,15 @@ module.exports = (root)->
         ret.val   = ast_tree.value
         ret
       
+      when 'Assignment'
+        ret = new ast.Bin_op
+        ret.op = 'ASSIGN'
+        if !ret.op
+          throw new Error("unknown bin_op #{ast_tree.operator}")
+        ret.a = walk_exec ast_tree.leftHandSide, ctx
+        ret.b = walk_exec ast_tree.rightHandSide, ctx
+        ret
+      
       when 'BinaryOperation'
         ret = new ast.Bin_op
         ret.op = bin_op_map[ast_tree.operator]
@@ -60,9 +69,21 @@ module.exports = (root)->
         ret.b = walk_exec ast_tree.rightExpression, ctx
         ret
       
+      when 'FunctionCall'
+        ret = new ast.Fn_call
+        ret.fn = new ast.Var
+        ret.fn.name = ast_tree.expression.name
+        
+        for v in ast_tree.arguments
+          ret.arg_list.push walk_exec v, ctx
+        ret
+      
       # ###################################################################################################
       #    stmt
       # ###################################################################################################
+      when 'ExpressionStatement'
+        walk_exec ast_tree.expression, ctx
+      
       when 'VariableDeclarationStatement'
         if ast_tree.declarations.length != 1
           throw new Error("ast_tree.declarations.length != 1")
@@ -159,7 +180,6 @@ module.exports = (root)->
   fn_list = []
   
   for contract in ctx.contract_list
-    p contract.scope.list
     for node in contract.scope.list
       switch node.constructor.name
         when 'Var_decl'

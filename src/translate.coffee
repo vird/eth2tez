@@ -6,18 +6,24 @@ module = @
   ADD : '+'
   # SUB : '-'
   # MUL : '*'
+  ASSIGN : ':='
 
 @bin_op_name_cb_map = {}
 
 class @Gen_context
-  var_hash : {}
+  var_hash    : {}
   expand_hash : false
-  in_fn : false
+  in_fn       : false
+  tmp_idx     : 0
+  sink_list   : []
+  
   constructor:()->
     @var_hash = {}
+    @sink_list = []
   
   mk_nest : ()->
     t = new module.Gen_context
+    t.var_hash = clone @var_hash
     t
 
 translate_type = (type)->
@@ -29,6 +35,14 @@ translate_type = (type)->
       config.storage
     else
       throw new Error("unknown solidity type '#{type}'")
+
+type2default_value = (type)->
+  switch type
+    when 't_uint256'
+      '0'
+    else
+      throw new Error("unknown solidity type '#{type}'")
+    
 
 @gen = gen = (ast, opt = {}, ctx = new module.Gen_context)->
   switch ast.constructor.name
@@ -51,16 +65,36 @@ translate_type = (type)->
       else
         throw new Error "Unknown/unimplemented bin_op #{ast.op}"
       
+    when "Const"
+      ast.val
+    
+    when "Fn_call"
+      fn = gen ast.fn, opt, ctx
+      ret_type = 
+      arg_list = []
+      for v in ast.arg_list
+        arg_list.push gen v, opt, ctx
+      arg_list.push config.contractStorage
+      tmp_var = "_tmp#{ctx.tmp_idx++}"
+      ctx.sink_list.push "const #{tmp_var} : (TBD) = #{fn}(#{arg_list.join ', '})"
+      tmp_var
+      
     # ###################################################################################################
     #    stmt
     # ###################################################################################################
     when "Scope"
       jl = []
-      for v in ast.list
-        t = gen v, opt, ctx
+      append = (t)->
         if t and t[t.length - 1] != ";"
           t += ";"
         jl.push t if t != ''
+        return
+      for v in ast.list
+        t = gen v, opt, ctx
+        append t
+        for sink in ctx.sink_list
+          append sink
+        
       
       ret = jl.pop() or ''
       if 0 != ret.indexOf 'with'
@@ -87,7 +121,7 @@ translate_type = (type)->
         join_list jl, ''
     
     when "Var_decl"
-      ctx.var_hash[ast.name] = ast
+      ctx.var_hash[ast.name] = true
       if ast.assign_value
         val = gen ast.assign_value, opt, ctx
         """
@@ -95,18 +129,15 @@ translate_type = (type)->
         """
       else
         """
-        const #{ast.name} : #{translate_type ast.type}
+        const #{ast.name} : #{translate_type ast.type} = #{type2default_value ast.type}
         """
-    
-    when "Const"
-      ast.val
     
     when "Ret_multi"
       jl = []
       for v in ast.t_list
         jl.push gen v, opt, ctx
       """
-      with (#{jl.join '; '})
+      with (#{jl.join ', '})
       """
     
     when "Class_decl"
@@ -124,6 +155,7 @@ translate_type = (type)->
       """
     
     when "Fn_decl_multiret"
+      ctx.var_hash[ast.name] = true
       ctx = ctx.mk_nest()
       ctx.in_fn = true
       arg_jl = []
@@ -138,7 +170,7 @@ translate_type = (type)->
       
       body = gen ast.scope, opt, ctx
       """
-      function #{ast.name} (#{arg_jl.join '; '}) : (#{ret_jl.join '; '}) is
+      function #{ast.name} (#{arg_jl.join '; '}) : (#{ret_jl.join ' * '}) is
         #{make_tab body, '  '}
       """
     

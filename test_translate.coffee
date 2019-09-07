@@ -9,11 +9,12 @@ solidity_ast = ast_gen """
   contract Summator {
     uint public value;
     
-    function skip() public returns (uint) {
-      return 5;
+    function increase() public {
+      value = 13;
     }
     function sum(uint a) public returns (uint yourMom) {
       uint x = 5;
+      increase();
       return value + x;
     }
   }

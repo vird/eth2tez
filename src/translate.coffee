@@ -146,7 +146,11 @@ type2default_value = (type)->
     
     when "Field_access"
       t = gen ast.t, opt, ctx
-      "#{t}.#{ast.name}"
+      ret = "#{t}.#{ast.name}"
+      # HOOK
+      if ret == 'contractStorage.msg.sender'
+        ret = 'sender'
+      ret
     
     when "Fn_call"
       fn = gen ast.fn, opt, ctx
@@ -276,6 +280,7 @@ type2default_value = (type)->
       ctx.in_fn = true
       arg_jl = []
       for v,idx in ast.arg_name_list
+        ctx.var_hash[v] = true
         type = translate_type ast.type_i.nest_list[idx]
         arg_jl.push "const #{v} : #{type}"
       

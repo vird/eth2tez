@@ -3,7 +3,14 @@ Type = require 'type'
 ast = require './ast'
 
 bin_op_map =
-  '+' : 'ADD'
+  '+'   : 'ADD'
+  
+  '==' : 'EQ'
+  '!=' : 'NE'
+  '>'  : 'GT'
+  '<'  : 'LT'
+  '>=' : 'GTE'
+  '<=' : 'LTE'
 
 class Context
   current_contract  : null
@@ -103,6 +110,13 @@ module.exports = (root)->
           ret.list.push walk_exec node, ctx
         ret
       
+      when "IfStatement"
+        ret = new ast.If
+        ret.cond = walk_exec ast_tree.condition, ctx
+        ret.t    = walk_exec ast_tree.trueBody,  ctx
+        ret.f    = walk_exec ast_tree.falseBody, ctx
+        ret
+      
       # ###################################################################################################
       #    control flow
       # ###################################################################################################
@@ -176,7 +190,7 @@ module.exports = (root)->
   
   # stub. Select first function
   storage_decl = new ast.Class_decl
-  storage_decl.name = 'store'
+  storage_decl.name = config.storage
   fn_list = []
   
   for contract in ctx.contract_list

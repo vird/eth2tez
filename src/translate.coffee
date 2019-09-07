@@ -6,10 +6,25 @@ module = @
   ADD : '+'
   # SUB : '-'
   # MUL : '*'
+  
+  
+  EQ : '='
+  NE : '=/='
+  GT : '>'
+  LT : '<'
+  GTE: '>='
+  LTE: '<='
 
 @bin_op_name_cb_map =
   ASSIGN : (a, b)->
     "#{a} := #{b}"
+
+smart_bracket = (t)->
+  if t[0] == '(' and t[t.length-1] == ')'
+    t
+  else
+    "(#{t})"
+
 
 class @Gen_context
   fn_hash     : {}
@@ -77,13 +92,25 @@ type2default_value = (type)->
         throw new Error "Unknown/unimplemented bin_op #{ast.op}"
       
     when "Const"
-      ast.val
+      if ast.type.main == 'string'
+        JSON.stringify ast.val
+      else
+        ast.val
     
     when "Fn_call"
       fn = gen ast.fn, opt, ctx
       arg_list = []
       for v in ast.arg_list
         arg_list.push gen v, opt, ctx
+      
+      # HACK  
+      if fn == "#{config.contractStorage}.require"
+        arg_list[0]
+        return """
+          if (!#{smart_bracket arg_list[0]}) begin
+            fail(#{arg_list[1]});
+          end
+          """
       
       fn_decl = ctx.fn_hash[fn]
       if !fn_decl
@@ -134,8 +161,9 @@ type2default_value = (type)->
             skip
           }
           """
+        ret = " #{ret}" if ret
         """
-        #{body} #{ret}
+        #{body}#{ret}
         """
       else
         join_list jl, ''
@@ -158,6 +186,14 @@ type2default_value = (type)->
         jl.push gen v, opt, ctx
       """
       with (#{jl.join ', '})
+      """
+    
+    when "If"
+      cond = gen ast.cond, opt, ctx
+      t    = gen ast.t, opt, ctx
+      f    = gen ast.f, opt, ctx
+      """
+      if (#{cond}) then #{t} else #{f};
       """
     
     when "Class_decl"

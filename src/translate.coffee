@@ -32,7 +32,11 @@ module = @
   ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
   ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
   ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
-  INDEX_ACCESS : (a, b)-> "#{a}[#{b}]"
+  INDEX_ACCESS : (a, b, ctx)->
+    ret = if ctx.lvalue
+      "#{a}[#{b}]"
+    else
+      "get_force(#{b}, #{a})"
 
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"
@@ -53,6 +57,7 @@ class @Gen_context
   in_fn       : false
   tmp_idx     : 0
   sink_list   : []
+  lvalue      : false
   
   constructor:()->
     @fn_hash    = {}
@@ -135,18 +140,21 @@ var_name_trans = (name)->
         "#{config.contractStorage}.#{name}"
     
     when 'Bin_op'
-      _a = gen ast.a, opt, ctx
+      ctx_lvalue = ctx.mk_nest()
+      if 0 == ast.op.indexOf 'ASS'
+        ctx_lvalue.lvalue = true
+      _a = gen ast.a, opt, ctx_lvalue
       _b = gen ast.b, opt, ctx
       if op = module.bin_op_name_map[ast.op]
         "(#{_a} #{op} #{_b})"
       else if cb = module.bin_op_name_cb_map[ast.op]
-        cb(_a, _b)
+        cb(_a, _b, ctx)
       else
         throw new Error "Unknown/unimplemented bin_op #{ast.op}"
     
     when "Un_op"
       if cb = module.un_op_name_cb_map[ast.op]
-        cb gen ast.a, opt, ctx
+        cb gen(ast.a, opt, ctx), ctx
       else
         throw new Error "Unknown/unimplemented un_op #{ast.op}"
     

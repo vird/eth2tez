@@ -29,6 +29,12 @@ bin_op_map =
   '*=' : 'ASS_MUL'
   '/=' : 'ASS_DIV'
 
+is_complex_assign_op =
+  'ASS_ADD' : true
+  'ASS_SUB' : true
+  'ASS_MUL' : true
+  'ASS_DIV' : true
+
 un_op_map =
   '-' : 'MINUS'
   '+' : 'PLUS'
@@ -41,6 +47,17 @@ class Context
     @contract_list = []
 
 module.exports = (root)->
+  
+  postprocess_bin_op = (ast_ready)->
+    return ast_ready if !is_complex_assign_op[ast_ready.op]
+    ret = new ast.Bin_op
+    ret.op = 'ASSIGN'
+    ret.a = ast_ready.a
+    ret.b = inter = new ast.Bin_op
+    inter.op = ast_ready.op.replace /^ASS_/, ''
+    inter.a = ast_ready.a
+    inter.b = ast_ready.b
+    ret
   
   walk_type = (ast_tree, ctx)->
     switch ast_tree.nodeType
@@ -100,7 +117,7 @@ module.exports = (root)->
           throw new Error("unknown bin_op #{ast_tree.operator}")
         ret.a = walk_exec ast_tree.leftHandSide, ctx
         ret.b = walk_exec ast_tree.rightHandSide, ctx
-        ret
+        postprocess_bin_op ret
       
       when 'BinaryOperation'
         ret = new ast.Bin_op
@@ -109,7 +126,7 @@ module.exports = (root)->
           throw new Error("unknown bin_op #{ast_tree.operator}")
         ret.a = walk_exec ast_tree.leftExpression, ctx
         ret.b = walk_exec ast_tree.rightExpression, ctx
-        ret
+        postprocess_bin_op ret
       
       when 'MemberAccess'
         ret = new ast.Field_access

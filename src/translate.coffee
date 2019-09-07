@@ -66,8 +66,7 @@ class @Gen_context
     t
 
 translate_type = (type)->
-  type = type.toString()
-  switch type
+  switch type.main
     when 't_bool'
       'bool'
     when 't_uint256'
@@ -82,6 +81,10 @@ translate_type = (type)->
       'bytes'
     when config.storage
       config.storage
+    when 'map'
+      key   = translate_type type.nest_list[0]
+      value = translate_type type.nest_list[1]
+      "map(#{key}, #{value})"
     else
       throw new Error("unknown solidity type '#{type}'")
 

@@ -42,6 +42,19 @@ class Context
 
 module.exports = (root)->
   
+  walk_type = (ast_tree, ctx)->
+    switch ast_tree.nodeType
+      when 'ElementaryTypeName'
+        new Type ast_tree.typeDescriptions.typeIdentifier
+      when 'Mapping'
+        ret = new Type "map"
+        ret.nest_list.push walk_type ast_tree.keyType, ctx
+        ret.nest_list.push walk_type ast_tree.valueType, ctx
+        ret
+      else
+        p ast_tree
+        throw new Error("walk_type unknown nodeType '#{ast_tree.nodeType}'")
+  
   walk_param = (ast_tree, ctx)->
     switch ast_tree.nodeType
       when 'ParameterList'
@@ -207,10 +220,12 @@ module.exports = (root)->
         return if name == 'experimental'
         throw new Error("unknown pragma '#{name}'")
       when "VariableDeclaration"
+        pp ast_tree.typeName
         ret = new ast.Var_decl
         ret._const = ast_tree.constant
         ret.name = ast_tree.name
-        ret.type = new Type ast_tree.typeDescriptions.typeIdentifier
+        ret.type = walk_type ast_tree.typeName, ctx
+        # ret.type = new Type ast_tree.typeDescriptions.typeIdentifier
         if ast_tree.value
           ret.assign_value = walk_exec ast_tree.value, ctx
         # ast_tree.typeName

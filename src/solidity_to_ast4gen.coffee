@@ -1,5 +1,6 @@
+config = require './config'
 Type = require 'type'
-ast = require 'ast4gen'
+ast = require './ast'
 
 bin_op_map =
   '+' : 'ADD'
@@ -73,7 +74,6 @@ module.exports = (root)->
         ret.name = decl.name
         ret.type = new Type decl.typeDescriptions.typeIdentifier
         ret.assign_value = walk_exec ast_tree.initialValue, ctx
-        
         ret
       
       when "Block"
@@ -86,8 +86,8 @@ module.exports = (root)->
       #    control flow
       # ###################################################################################################
       when 'Return'
-        ret = new ast.Ret
-        ret.t = walk_exec ast_tree.expression
+        ret = new ast.Ret_multi
+        ret.t_list.push walk_exec ast_tree.expression
         ret
       
       else
@@ -117,24 +117,22 @@ module.exports = (root)->
         
       when "FunctionDefinition"
         # fn = ctx.current_function = new SFunction
-        fn = ctx.current_function = new ast.Fn_decl
+        fn = ctx.current_function = new ast.Fn_decl_multiret
         # ctx.current_contract.function_list.push ctx.current_function
-        ctx.current_contract.scope.list.push ctx.current_function
+        # ctx.current_contract.scope.list.push ctx.current_function
         fn.name = ast_tree.name
-        arg_list = walk_param ast_tree.parameters, ctx
-        ret_list = walk_param ast_tree.returnParameters, ctx
-        if ret_list.length > 1
-          throw new Error("ret_list.length > 1")
         
-        fn.type =  new Type 'function'
-        fn.type.nest_list.push ret_list[0]
-        fn.type.nest_list.append arg_list
-        for v in arg_list
+        fn.type_i =  new Type 'function'
+        fn.type_o =  new Type 'function'
+        
+        fn.type_i.nest_list = walk_param ast_tree.parameters, ctx
+        fn.type_o.nest_list = walk_param ast_tree.returnParameters, ctx
+        
+        for v in fn.type_i.nest_list
           fn.arg_name_list.push v._name
         # ctx.stateMutability
         if ast_tree.modifiers.length
           throw new "ast_tree.modifiers not implemented"
-        # TODO standard
         
         fn.scope = walk_exec ast_tree.body, ctx
         fn
@@ -143,19 +141,63 @@ module.exports = (root)->
         ctx.contract_list.push ctx.current_contract = new ast.Class_decl
         ctx.current_contract.name = ast_tree.name
         for node in ast_tree.nodes
-          walk node, ctx
+          ctx.current_contract.scope.list.push walk node, ctx
+        null
       else
         p ast_tree
         throw new Error("walk unknown nodeType '#{ast_tree.nodeType}'")
-    return
+    
   
   # first pass
   ctx = new Context
   for node in root.nodes
     walk node, ctx  
   
+  # stub. Select first function
+  storage_decl = new ast.Class_decl
+  storage_decl.name = 'store'
+  fn_list = []
+  
+  for contract in ctx.contract_list
+    p contract.scope.list
+    for node in contract.scope.list
+      switch node.constructor.name
+        when 'Var_decl'
+          storage_decl.scope.list.push node
+        when 'Fn_decl_multiret'
+          # TODO add this function as type to storage
+          
+          fn_list.push node
+          node.arg_name_list.push config.contractStorage
+          node.type_i.nest_list.push new Type config.storage
+          node.type_o.nest_list.push new Type config.storage
+          
+          last = node.scope.list.last()
+          t = new ast.Var
+          t.name = config.contractStorage
+          if last.constructor.name == 'Ret_multi'
+            last.t_list.push t
+          else
+            node.scope.list.push last = new ast.Ret_multi
+            last.t_list.push t
+        else
+          throw new Error("bad type node.constructor.name=#{node.constructor.name}")
   ret = new ast.Scope
-  for v in ctx.contract_list
-    ret.list.push v
+  ret.list.push storage_decl
+  ret.list.append fn_list
+  
+  main_fn = new ast.Fn_decl_multiret
+  main_fn.name = 'main'
+  main_fn.arg_name_list.push config.contractStorage
+  main_fn.type_i = new Type "function<#{config.storage}>"
+  main_fn.type_o = new Type "function<#{config.storage}>"
+  main_fn.scope  = new ast.Scope
+  
+  # TODO
+  main_fn.scope.list.push tmp = new ast.Ret_multi
+  tmp.t_list.push t = new ast.Var
+  t.name = config.contractStorage
+  
+  ret.list.push main_fn
   
   ret

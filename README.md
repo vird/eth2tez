@@ -9,6 +9,7 @@ ethereum to tezos translator
     source ~/.bashrc
     # node install
     nvm i 6.6
+    npm i -g iced-coffee-script
     # install this repo
     npm i -g eth2tez
 

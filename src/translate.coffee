@@ -27,6 +27,11 @@ module = @
   BIT_AND : (a, b)-> "bitwise_and(#{a}, #{b})"
   BIT_OR  : (a, b)-> "bitwise_or(#{a}, #{b})"
   BIT_XOR : (a, b)-> "bitwise_xor(#{a}, #{b})"
+  
+  ASS_ADD : (a, b)-> "#{a} := #{a} + #{b}"
+  ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
+  ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
+  ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
 
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"
@@ -83,7 +88,7 @@ type2default_value = (type)->
     when 't_bool'
       'false'
     when 't_uint256'
-      '0'
+      '0n'
     when 't_int256'
       '0'
     when 't_address'
@@ -208,14 +213,17 @@ type2default_value = (type)->
     
     when "Var_decl"
       ctx.var_hash[ast.name] = true
+      type = translate_type ast.type
       if ast.assign_value
         val = gen ast.assign_value, opt, ctx
+        if type == 'nat'
+          val = "nat(#{val})"
         """
-        const #{ast.name} : #{translate_type ast.type} = #{val}
+        const #{ast.name} : #{} = #{val}
         """
       else
         """
-        const #{ast.name} : #{translate_type ast.type} = #{type2default_value ast.type}
+        const #{ast.name} : #{type} = #{type2default_value ast.type}
         """
     
     when "Ret_multi"

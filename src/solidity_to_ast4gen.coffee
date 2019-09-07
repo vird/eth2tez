@@ -26,6 +26,12 @@ bin_op_map =
   '<'  : 'LT'
   '>=' : 'GTE'
   '<=' : 'LTE'
+  
+  '='  : 'ASSIGN'
+  '+=' : 'ASS_ADD'
+  '-=' : 'ASS_SUB'
+  '*=' : 'ASS_MUL'
+  '/=' : 'ASS_DIV'
 
 un_op_map =
   '-' : 'MINUS'
@@ -79,7 +85,7 @@ module.exports = (root)->
       
       when 'Assignment'
         ret = new ast.Bin_op
-        ret.op = 'ASSIGN'
+        ret.op = bin_op_map[ast_tree.operator]
         if !ret.op
           throw new Error("unknown bin_op #{ast_tree.operator}")
         ret.a = walk_exec ast_tree.leftHandSide, ctx

@@ -14,6 +14,10 @@ module = @
   LT : '<'
   GTE: '>='
   LTE: '<='
+  
+  
+  BOOL_AND: 'and'
+  BOOL_OR : 'or'
 
 @bin_op_name_cb_map =
   ASSIGN : (a, b)->

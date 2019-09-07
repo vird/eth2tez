@@ -7,6 +7,9 @@ bin_op_map =
   '-'   : 'SUB'
   '*'   : 'MUL'
   
+  '&&' : 'BOOL_AND'
+  '||' : 'BOOL_OR'
+  
   '==' : 'EQ'
   '!=' : 'NE'
   '>'  : 'GT'

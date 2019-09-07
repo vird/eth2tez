@@ -11,6 +11,7 @@ module = @
 @bin_op_name_cb_map = {}
 
 class @Gen_context
+  fn_hash     : {}
   var_hash    : {}
   expand_hash : false
   in_fn       : false
@@ -18,12 +19,14 @@ class @Gen_context
   sink_list   : []
   
   constructor:()->
-    @var_hash = {}
-    @sink_list = []
+    @fn_hash    = {}
+    @var_hash   = {}
+    @sink_list  = []
   
   mk_nest : ()->
     t = new module.Gen_context
     t.var_hash = clone @var_hash
+    t.fn_hash  = @fn_hash
     t
 
 translate_type = (type)->
@@ -44,7 +47,14 @@ type2default_value = (type)->
       throw new Error("unknown solidity type '#{type}'")
     
 
-@gen = gen = (ast, opt = {}, ctx = new module.Gen_context)->
+@gen = (ast, opt = {})->
+  ctx = new module.Gen_context
+  for v in ast.list
+    if v.constructor.name == 'Fn_decl_multiret'
+      ctx.fn_hash[v.name] = v
+  module._gen ast, opt, ctx
+
+@_gen = gen = (ast, opt, ctx)->
   switch ast.constructor.name
     # ###################################################################################################
     #    expr
@@ -70,14 +80,22 @@ type2default_value = (type)->
     
     when "Fn_call"
       fn = gen ast.fn, opt, ctx
-      ret_type = 
       arg_list = []
       for v in ast.arg_list
         arg_list.push gen v, opt, ctx
-      arg_list.push config.contractStorage
-      tmp_var = "_tmp#{ctx.tmp_idx++}"
-      ctx.sink_list.push "const #{tmp_var} : (TBD) = #{fn}(#{arg_list.join ', '})"
-      tmp_var
+      
+      fn_decl = ctx.fn_hash[fn]
+      if !fn_decl
+        "#{fn}(#{arg_list.join ', '}"
+      else
+        type_jl = []
+        for v in fn_decl.type_o.nest_list
+          type_jl.push translate_type v
+        
+        arg_list.push config.contractStorage
+        tmp_var = "_tmp#{ctx.tmp_idx++}"
+        ctx.sink_list.push "const #{tmp_var} : (#{type_jl.join ' * '}) = #{fn}(#{arg_list.join ', '})"
+        tmp_var
       
     # ###################################################################################################
     #    stmt
@@ -91,9 +109,10 @@ type2default_value = (type)->
         return
       for v in ast.list
         t = gen v, opt, ctx
-        append t
         for sink in ctx.sink_list
           append sink
+        ctx.sink_list.clear()
+        append t
         
       
       ret = jl.pop() or ''

@@ -11,7 +11,7 @@ ethereum to tezos translator
     nvm i 6.6
     npm i -g iced-coffee-script
     # install this repo
-    npm i -g eth2tez
+    npm i -g vird/eth2tez
 
 ## how to use
 # under dev

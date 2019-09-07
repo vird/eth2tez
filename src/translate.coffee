@@ -36,7 +36,7 @@ translate_type = (type)->
     #    expr
     # ###################################################################################################
     when "Var"
-      if ctx.var_hash[ast.name]
+      if ctx.var_hash[ast.name] or ast.name == config.contractStorage
         ast.name
       else
         "#{config.contractStorage}.#{ast.name}"
@@ -67,10 +67,21 @@ translate_type = (type)->
         jl.push ret
         ret = ''
       if ctx.in_fn
+        body = ""
+        if jl.length
+          body = """
+          block {
+            #{join_list jl, '  '}
+          }
+          """
+        else
+          body = """
+          block {
+            skip
+          }
+          """
         """
-        begin
-          #{join_list jl, '  '}
-        end #{ret}
+        #{body} #{ret}
         """
       else
         join_list jl, ''

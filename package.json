@@ -32,6 +32,7 @@
     "ast4gen": "github:hu2prod/ast4gen",
     "fy": "github:hu2prod/fy",
     "iced-runtime": "^1.0.3",
-    "solc": "^0.5.11"
+    "solc": "^0.5.11",
+    "type": "github:hu2prod/type"
   }
 }

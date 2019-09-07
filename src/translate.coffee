@@ -1,3 +1,4 @@
+Type = require 'type'
 ast = require 'ast4gen'
 
 class Context
@@ -43,11 +44,10 @@ module.exports = (root)->
         if ast_tree.value
           throw new Error("ast_tree.value not implemented")
         ret = []
-        # NOTE slight copypaste
-        ret.push {
-          name : ast_tree.name
-          type : ast_tree.typeDescriptions.typeIdentifier
-        }
+        t = new Type ast_tree.typeDescriptions.typeIdentifier
+        # HACK INJECT
+        t._name = ast_tree.name
+        ret.push t
         ret
       else
         p ast_tree
@@ -62,15 +62,12 @@ module.exports = (root)->
       when 'Identifier'
         ret = new ast.Var
         ret.name = ast_tree.name
-        # TODO Type
-        ret.type = ast_tree.typeDescriptions.typeIdentifier
+        ret.type = new Type ast_tree.typeDescriptions.typeIdentifier
         ret
       
       when 'Literal'
         ret = new ast.Const
-        # ret.name = ast_tree.name
-        # TODO Type        
-        ret.type  = ast_tree.kind
+        ret.type  = new Type ast_tree.kind
         ret.val   = ast_tree.value
         ret
       
@@ -93,8 +90,7 @@ module.exports = (root)->
         
         ret = new ast.Var_decl
         ret.name = decl.name
-        # TODO Type
-        ret.type = decl.typeDescriptions.typeIdentifier
+        ret.type = new Type decl.typeDescriptions.typeIdentifier
         ret.assign_value = walk_exec ast_tree.initialValue, ctx
         
         ret
@@ -142,13 +138,20 @@ module.exports = (root)->
         fn = ctx.current_function = new ast.Fn_decl
         ctx.current_contract.function_list.push ctx.current_function
         fn.name = ast_tree.name
-        # TODO Type
-        # fn.type = 'function<void>'
+        arg_list = walk_param ast_tree.parameters, ctx
+        ret_list = walk_param ast_tree.returnParameters, ctx
+        if ret_list.length > 1
+          throw new Error("ret_list.length > 1")
+        
+        fn.type =  new Type 'function'
+        fn.type.nest_list.push ret_list[0]
+        fn.type.nest_list.append arg_list
+        for v in arg_list
+          fn.type.arg_name_list.push v._name
         # ctx.stateMutability
         if ast_tree.modifiers.length
           throw new "ast_tree.modifiers not implemented"
-        fn.arg_list = walk_param ast_tree.parameters, ctx
-        fn.ret_list = walk_param ast_tree.returnParameters, ctx
+        # TODO standard
         
         fn.scope = walk_exec ast_tree.body, ctx
         fn
@@ -168,6 +171,6 @@ module.exports = (root)->
   for node in root.nodes
     walk node, ctx  
   
-  # p ctx.current_contract
+  # pp ctx.current_contract
   
   return

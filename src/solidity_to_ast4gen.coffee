@@ -9,6 +9,10 @@ bin_op_map =
   '/'   : 'DIV'
   '%'   : 'MOD'
   
+  '&' : 'BIT_AND'
+  '|' : 'BIT_OR'
+  '^' : 'BIT_XOR'
+  
   '&&' : 'BOOL_AND'
   '||' : 'BOOL_OR'
   

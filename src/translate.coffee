@@ -22,8 +22,10 @@ module = @
   BOOL_OR : 'or'
 
 @bin_op_name_cb_map =
-  ASSIGN : (a, b)->
-    "#{a} := #{b}"
+  ASSIGN  : (a, b)-> "#{a} := #{b}"
+  BIT_AND : (a, b)-> "bitwise_and(#{a}, #{b})"
+  BIT_OR  : (a, b)-> "bitwise_or(#{a}, #{b})"
+  BIT_XOR : (a, b)-> "bitwise_xor(#{a}, #{b})"
 
 smart_bracket = (t)->
   if t[0] == '(' and t[t.length-1] == ')'

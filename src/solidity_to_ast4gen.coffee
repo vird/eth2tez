@@ -98,6 +98,19 @@ module.exports = (root)->
         ret.b = walk_exec ast_tree.rightExpression, ctx
         ret
       
+      when 'MemberAccess'
+        ret = new ast.Field_access
+        ret.t = walk_exec ast_tree.expression, ctx
+        ret.name = ast_tree.memberName
+        ret
+      
+      when 'IndexAccess'
+        ret = new ast.Bin_op
+        ret.op = 'INDEX_ACCESS'
+        ret.a = walk_exec ast_tree.baseExpression, ctx
+        ret.b = walk_exec ast_tree.indexExpression, ctx
+        ret
+      
       when 'UnaryOperation'
         ret = new ast.Un_op
         ret.op = un_op_map[ast_tree.operator]

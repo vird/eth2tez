@@ -32,6 +32,7 @@ module = @
   ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
   ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
   ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
+  INDEX_ACCESS : (a, b)-> "(#{a})[#{b}]"
 
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"
@@ -139,6 +140,10 @@ type2default_value = (type)->
         JSON.stringify ast.val
       else
         ast.val
+    
+    when "Field_access"
+      t = gen ast.t, opt, ctx
+      "(#{t}).#{ast.name}"
     
     when "Fn_call"
       fn = gen ast.fn, opt, ctx

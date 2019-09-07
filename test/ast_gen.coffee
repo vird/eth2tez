@@ -1,7 +1,6 @@
 ast_gen = require '../src/ast_gen'
 describe 'ast_gen section', ()->
   it 'test contract 1', ()->
-    @timeout 10000
     ast_gen """
     pragma solidity ^0.5.11;
     
@@ -16,7 +15,6 @@ describe 'ast_gen section', ()->
     """
   
   it 'test contract 1', ()->
-    @timeout 10000
     ast_gen """
     pragma solidity ^0.5.11;
     

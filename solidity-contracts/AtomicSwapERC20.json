@@ -1,0 +1,6997 @@
+{
+	"attributes" : 
+	{
+		"absolutePath" : "AtomicSwapERC20.sol",
+		"exportedSymbols" : 
+		{
+			"AtomicSwapERC20" : 
+			[
+				379
+			]
+		}
+	},
+	"children" : 
+	[
+		{
+			"attributes" : 
+			{
+				"literals" : 
+				[
+					"solidity",
+					"^",
+					"0.5",
+					".11"
+				]
+			},
+			"id" : 1,
+			"name" : "PragmaDirective",
+			"src" : "0:24:0"
+		},
+		{
+			"attributes" : 
+			{
+				"SourceUnit" : 446,
+				"absolutePath" : "ERC20.sol",
+				"file" : "./ERC20.sol",
+				"scope" : 380,
+				"symbolAliases" : 
+				[
+					null
+				],
+				"unitAlias" : ""
+			},
+			"id" : 2,
+			"name" : "ImportDirective",
+			"src" : "26:21:0"
+		},
+		{
+			"attributes" : 
+			{
+				"baseContracts" : 
+				[
+					null
+				],
+				"contractDependencies" : 
+				[
+					null
+				],
+				"contractKind" : "contract",
+				"documentation" : null,
+				"fullyImplemented" : true,
+				"linearizedBaseContracts" : 
+				[
+					379
+				],
+				"name" : "AtomicSwapERC20",
+				"scope" : 380
+			},
+			"children" : 
+			[
+				{
+					"attributes" : 
+					{
+						"canonicalName" : "AtomicSwapERC20.Swap",
+						"name" : "Swap",
+						"scope" : 379,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "timelock",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "uint256",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint256",
+										"type" : "uint256"
+									},
+									"id" : 3,
+									"name" : "ElementaryTypeName",
+									"src" : "97:7:0"
+								}
+							],
+							"id" : 4,
+							"name" : "VariableDeclaration",
+							"src" : "97:16:0"
+						},
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "erc20Value",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "uint256",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint256",
+										"type" : "uint256"
+									},
+									"id" : 5,
+									"name" : "ElementaryTypeName",
+									"src" : "119:7:0"
+								}
+							],
+							"id" : 6,
+							"name" : "VariableDeclaration",
+							"src" : "119:18:0"
+						},
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "erc20Trader",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "address",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "address",
+										"stateMutability" : "nonpayable",
+										"type" : "address"
+									},
+									"id" : 7,
+									"name" : "ElementaryTypeName",
+									"src" : "143:7:0"
+								}
+							],
+							"id" : 8,
+							"name" : "VariableDeclaration",
+							"src" : "143:19:0"
+						},
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "erc20ContractAddress",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "address",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "address",
+										"stateMutability" : "nonpayable",
+										"type" : "address"
+									},
+									"id" : 9,
+									"name" : "ElementaryTypeName",
+									"src" : "168:7:0"
+								}
+							],
+							"id" : 10,
+							"name" : "VariableDeclaration",
+							"src" : "168:28:0"
+						},
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "withdrawTrader",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "address",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "address",
+										"stateMutability" : "nonpayable",
+										"type" : "address"
+									},
+									"id" : 11,
+									"name" : "ElementaryTypeName",
+									"src" : "202:7:0"
+								}
+							],
+							"id" : 12,
+							"name" : "VariableDeclaration",
+							"src" : "202:22:0"
+						},
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "secretLock",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "bytes32",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "bytes32",
+										"type" : "bytes32"
+									},
+									"id" : 13,
+									"name" : "ElementaryTypeName",
+									"src" : "230:7:0"
+								}
+							],
+							"id" : 14,
+							"name" : "VariableDeclaration",
+							"src" : "230:18:0"
+						},
+						{
+							"attributes" : 
+							{
+								"constant" : false,
+								"name" : "secretKey",
+								"scope" : 17,
+								"stateVariable" : false,
+								"storageLocation" : "default",
+								"type" : "bytes",
+								"value" : null,
+								"visibility" : "internal"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "bytes",
+										"type" : "bytes"
+									},
+									"id" : 15,
+									"name" : "ElementaryTypeName",
+									"src" : "254:5:0"
+								}
+							],
+							"id" : 16,
+							"name" : "VariableDeclaration",
+							"src" : "254:15:0"
+						}
+					],
+					"id" : 17,
+					"name" : "StructDefinition",
+					"src" : "79:195:0"
+				},
+				{
+					"attributes" : 
+					{
+						"canonicalName" : "AtomicSwapERC20.States",
+						"name" : "States"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "INVALID"
+							},
+							"id" : 18,
+							"name" : "EnumValue",
+							"src" : "296:7:0"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "OPEN"
+							},
+							"id" : 19,
+							"name" : "EnumValue",
+							"src" : "309:4:0"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "CLOSED"
+							},
+							"id" : 20,
+							"name" : "EnumValue",
+							"src" : "319:6:0"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "EXPIRED"
+							},
+							"id" : 21,
+							"name" : "EnumValue",
+							"src" : "331:7:0"
+						}
+					],
+					"id" : 22,
+					"name" : "EnumDefinition",
+					"src" : "278:64:0"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "swaps",
+						"scope" : 379,
+						"stateVariable" : true,
+						"storageLocation" : "default",
+						"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap)",
+						"value" : null,
+						"visibility" : "private"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap)"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "bytes32",
+										"type" : "bytes32"
+									},
+									"id" : 23,
+									"name" : "ElementaryTypeName",
+									"src" : "355:7:0"
+								},
+								{
+									"attributes" : 
+									{
+										"contractScope" : null,
+										"name" : "Swap",
+										"referencedDeclaration" : 17,
+										"type" : "struct AtomicSwapERC20.Swap"
+									},
+									"id" : 24,
+									"name" : "UserDefinedTypeName",
+									"src" : "366:4:0"
+								}
+							],
+							"id" : 25,
+							"name" : "Mapping",
+							"src" : "346:25:0"
+						}
+					],
+					"id" : 26,
+					"name" : "VariableDeclaration",
+					"src" : "346:39:0"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "swapStates",
+						"scope" : 379,
+						"stateVariable" : true,
+						"storageLocation" : "default",
+						"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+						"value" : null,
+						"visibility" : "private"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "bytes32",
+										"type" : "bytes32"
+									},
+									"id" : 27,
+									"name" : "ElementaryTypeName",
+									"src" : "398:7:0"
+								},
+								{
+									"attributes" : 
+									{
+										"contractScope" : null,
+										"name" : "States",
+										"referencedDeclaration" : 22,
+										"type" : "enum AtomicSwapERC20.States"
+									},
+									"id" : 28,
+									"name" : "UserDefinedTypeName",
+									"src" : "409:6:0"
+								}
+							],
+							"id" : 29,
+							"name" : "Mapping",
+							"src" : "389:27:0"
+						}
+					],
+					"id" : 30,
+					"name" : "VariableDeclaration",
+					"src" : "389:46:0"
+				},
+				{
+					"attributes" : 
+					{
+						"anonymous" : false,
+						"documentation" : null,
+						"name" : "Open"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "_swapID",
+										"scope" : 38,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 31,
+											"name" : "ElementaryTypeName",
+											"src" : "451:7:0"
+										}
+									],
+									"id" : 32,
+									"name" : "VariableDeclaration",
+									"src" : "451:15:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "_withdrawTrader",
+										"scope" : 38,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 33,
+											"name" : "ElementaryTypeName",
+											"src" : "468:7:0"
+										}
+									],
+									"id" : 34,
+									"name" : "VariableDeclaration",
+									"src" : "468:23:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "_secretLock",
+										"scope" : 38,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 35,
+											"name" : "ElementaryTypeName",
+											"src" : "492:7:0"
+										}
+									],
+									"id" : 36,
+									"name" : "VariableDeclaration",
+									"src" : "492:19:0"
+								}
+							],
+							"id" : 37,
+							"name" : "ParameterList",
+							"src" : "450:62:0"
+						}
+					],
+					"id" : 38,
+					"name" : "EventDefinition",
+					"src" : "440:73:0"
+				},
+				{
+					"attributes" : 
+					{
+						"anonymous" : false,
+						"documentation" : null,
+						"name" : "Expire"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "_swapID",
+										"scope" : 42,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 39,
+											"name" : "ElementaryTypeName",
+											"src" : "529:7:0"
+										}
+									],
+									"id" : 40,
+									"name" : "VariableDeclaration",
+									"src" : "529:15:0"
+								}
+							],
+							"id" : 41,
+							"name" : "ParameterList",
+							"src" : "528:17:0"
+						}
+					],
+					"id" : 42,
+					"name" : "EventDefinition",
+					"src" : "516:30:0"
+				},
+				{
+					"attributes" : 
+					{
+						"anonymous" : false,
+						"documentation" : null,
+						"name" : "Close"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "_swapID",
+										"scope" : 48,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 43,
+											"name" : "ElementaryTypeName",
+											"src" : "561:7:0"
+										}
+									],
+									"id" : 44,
+									"name" : "VariableDeclaration",
+									"src" : "561:15:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "_secretKey",
+										"scope" : 48,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes",
+												"type" : "bytes"
+											},
+											"id" : 45,
+											"name" : "ElementaryTypeName",
+											"src" : "578:5:0"
+										}
+									],
+									"id" : 46,
+									"name" : "VariableDeclaration",
+									"src" : "578:16:0"
+								}
+							],
+							"id" : 47,
+							"name" : "ParameterList",
+							"src" : "560:35:0"
+						}
+					],
+					"id" : 48,
+					"name" : "EventDefinition",
+					"src" : "549:47:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"name" : "onlyInvalidSwaps",
+						"visibility" : "internal"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 63,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 49,
+											"name" : "ElementaryTypeName",
+											"src" : "626:7:0"
+										}
+									],
+									"id" : 50,
+									"name" : "VariableDeclaration",
+									"src" : "626:15:0"
+								}
+							],
+							"id" : 51,
+							"name" : "ParameterList",
+							"src" : "625:17:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 52,
+													"name" : "Identifier",
+													"src" : "649:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_enum$_States_$22",
+															"typeString" : "enum AtomicSwapERC20.States"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "==",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 30,
+																		"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																		"value" : "swapStates"
+																	},
+																	"id" : 53,
+																	"name" : "Identifier",
+																	"src" : "658:10:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 50,
+																		"type" : "bytes32",
+																		"value" : "_swapID"
+																	},
+																	"id" : 54,
+																	"name" : "Identifier",
+																	"src" : "669:7:0"
+																}
+															],
+															"id" : 55,
+															"name" : "IndexAccess",
+															"src" : "658:19:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"member_name" : "INVALID",
+																"referencedDeclaration" : null,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 22,
+																		"type" : "type(enum AtomicSwapERC20.States)",
+																		"value" : "States"
+																	},
+																	"id" : 56,
+																	"name" : "Identifier",
+																	"src" : "681:6:0"
+																}
+															],
+															"id" : 57,
+															"name" : "MemberAccess",
+															"src" : "681:14:0"
+														}
+													],
+													"id" : 58,
+													"name" : "BinaryOperation",
+													"src" : "658:37:0"
+												}
+											],
+											"id" : 59,
+											"name" : "FunctionCall",
+											"src" : "649:47:0"
+										}
+									],
+									"id" : 60,
+									"name" : "ExpressionStatement",
+									"src" : "649:47:0"
+								},
+								{
+									"id" : 61,
+									"name" : "PlaceholderStatement",
+									"src" : "702:1:0"
+								}
+							],
+							"id" : 62,
+							"name" : "Block",
+							"src" : "643:65:0"
+						}
+					],
+					"id" : 63,
+					"name" : "ModifierDefinition",
+					"src" : "600:108:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"name" : "onlyOpenSwaps",
+						"visibility" : "internal"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 78,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 64,
+											"name" : "ElementaryTypeName",
+											"src" : "735:7:0"
+										}
+									],
+									"id" : 65,
+									"name" : "VariableDeclaration",
+									"src" : "735:15:0"
+								}
+							],
+							"id" : 66,
+							"name" : "ParameterList",
+							"src" : "734:17:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 67,
+													"name" : "Identifier",
+													"src" : "758:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_enum$_States_$22",
+															"typeString" : "enum AtomicSwapERC20.States"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "==",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 30,
+																		"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																		"value" : "swapStates"
+																	},
+																	"id" : 68,
+																	"name" : "Identifier",
+																	"src" : "767:10:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 65,
+																		"type" : "bytes32",
+																		"value" : "_swapID"
+																	},
+																	"id" : 69,
+																	"name" : "Identifier",
+																	"src" : "778:7:0"
+																}
+															],
+															"id" : 70,
+															"name" : "IndexAccess",
+															"src" : "767:19:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"member_name" : "OPEN",
+																"referencedDeclaration" : null,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 22,
+																		"type" : "type(enum AtomicSwapERC20.States)",
+																		"value" : "States"
+																	},
+																	"id" : 71,
+																	"name" : "Identifier",
+																	"src" : "790:6:0"
+																}
+															],
+															"id" : 72,
+															"name" : "MemberAccess",
+															"src" : "790:11:0"
+														}
+													],
+													"id" : 73,
+													"name" : "BinaryOperation",
+													"src" : "767:34:0"
+												}
+											],
+											"id" : 74,
+											"name" : "FunctionCall",
+											"src" : "758:44:0"
+										}
+									],
+									"id" : 75,
+									"name" : "ExpressionStatement",
+									"src" : "758:44:0"
+								},
+								{
+									"id" : 76,
+									"name" : "PlaceholderStatement",
+									"src" : "808:1:0"
+								}
+							],
+							"id" : 77,
+							"name" : "Block",
+							"src" : "752:62:0"
+						}
+					],
+					"id" : 78,
+					"name" : "ModifierDefinition",
+					"src" : "712:102:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"name" : "onlyClosedSwaps",
+						"visibility" : "internal"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 93,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 79,
+											"name" : "ElementaryTypeName",
+											"src" : "843:7:0"
+										}
+									],
+									"id" : 80,
+									"name" : "VariableDeclaration",
+									"src" : "843:15:0"
+								}
+							],
+							"id" : 81,
+							"name" : "ParameterList",
+							"src" : "842:17:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 82,
+													"name" : "Identifier",
+													"src" : "866:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_enum$_States_$22",
+															"typeString" : "enum AtomicSwapERC20.States"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "==",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 30,
+																		"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																		"value" : "swapStates"
+																	},
+																	"id" : 83,
+																	"name" : "Identifier",
+																	"src" : "875:10:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 80,
+																		"type" : "bytes32",
+																		"value" : "_swapID"
+																	},
+																	"id" : 84,
+																	"name" : "Identifier",
+																	"src" : "886:7:0"
+																}
+															],
+															"id" : 85,
+															"name" : "IndexAccess",
+															"src" : "875:19:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"member_name" : "CLOSED",
+																"referencedDeclaration" : null,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 22,
+																		"type" : "type(enum AtomicSwapERC20.States)",
+																		"value" : "States"
+																	},
+																	"id" : 86,
+																	"name" : "Identifier",
+																	"src" : "898:6:0"
+																}
+															],
+															"id" : 87,
+															"name" : "MemberAccess",
+															"src" : "898:13:0"
+														}
+													],
+													"id" : 88,
+													"name" : "BinaryOperation",
+													"src" : "875:36:0"
+												}
+											],
+											"id" : 89,
+											"name" : "FunctionCall",
+											"src" : "866:46:0"
+										}
+									],
+									"id" : 90,
+									"name" : "ExpressionStatement",
+									"src" : "866:46:0"
+								},
+								{
+									"id" : 91,
+									"name" : "PlaceholderStatement",
+									"src" : "918:1:0"
+								}
+							],
+							"id" : 92,
+							"name" : "Block",
+							"src" : "860:64:0"
+						}
+					],
+					"id" : 93,
+					"name" : "ModifierDefinition",
+					"src" : "818:106:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"name" : "onlyExpirableSwaps",
+						"visibility" : "internal"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 108,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 94,
+											"name" : "ElementaryTypeName",
+											"src" : "956:7:0"
+										}
+									],
+									"id" : 95,
+									"name" : "VariableDeclaration",
+									"src" : "956:15:0"
+								}
+							],
+							"id" : 96,
+							"name" : "ParameterList",
+							"src" : "955:17:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 97,
+													"name" : "Identifier",
+													"src" : "979:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_uint256",
+															"typeString" : "uint256"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "<=",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "timelock",
+																"referencedDeclaration" : 4,
+																"type" : "uint256"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"isConstant" : false,
+																		"isLValue" : true,
+																		"isPure" : false,
+																		"lValueRequested" : false,
+																		"type" : "struct AtomicSwapERC20.Swap storage ref"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 26,
+																				"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+																				"value" : "swaps"
+																			},
+																			"id" : 98,
+																			"name" : "Identifier",
+																			"src" : "988:5:0"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 95,
+																				"type" : "bytes32",
+																				"value" : "_swapID"
+																			},
+																			"id" : 99,
+																			"name" : "Identifier",
+																			"src" : "994:7:0"
+																		}
+																	],
+																	"id" : 100,
+																	"name" : "IndexAccess",
+																	"src" : "988:14:0"
+																}
+															],
+															"id" : 101,
+															"name" : "MemberAccess",
+															"src" : "988:23:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 462,
+																"type" : "uint256",
+																"value" : "now"
+															},
+															"id" : 102,
+															"name" : "Identifier",
+															"src" : "1015:3:0"
+														}
+													],
+													"id" : 103,
+													"name" : "BinaryOperation",
+													"src" : "988:30:0"
+												}
+											],
+											"id" : 104,
+											"name" : "FunctionCall",
+											"src" : "979:40:0"
+										}
+									],
+									"id" : 105,
+									"name" : "ExpressionStatement",
+									"src" : "979:40:0"
+								},
+								{
+									"id" : 106,
+									"name" : "PlaceholderStatement",
+									"src" : "1025:1:0"
+								}
+							],
+							"id" : 107,
+							"name" : "Block",
+							"src" : "973:58:0"
+						}
+					],
+					"id" : 108,
+					"name" : "ModifierDefinition",
+					"src" : "928:103:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"name" : "onlyWithSecretKey",
+						"visibility" : "internal"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 127,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 109,
+											"name" : "ElementaryTypeName",
+											"src" : "1062:7:0"
+										}
+									],
+									"id" : 110,
+									"name" : "VariableDeclaration",
+									"src" : "1062:15:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_secretKey",
+										"scope" : 127,
+										"stateVariable" : false,
+										"storageLocation" : "memory",
+										"type" : "bytes",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes",
+												"type" : "bytes"
+											},
+											"id" : 111,
+											"name" : "ElementaryTypeName",
+											"src" : "1079:5:0"
+										}
+									],
+									"id" : 112,
+									"name" : "VariableDeclaration",
+									"src" : "1079:23:0"
+								}
+							],
+							"id" : 113,
+							"name" : "ParameterList",
+							"src" : "1061:42:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 114,
+													"name" : "Identifier",
+													"src" : "1172:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_bytes32",
+															"typeString" : "bytes32"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "==",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "secretLock",
+																"referencedDeclaration" : 14,
+																"type" : "bytes32"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"isConstant" : false,
+																		"isLValue" : true,
+																		"isPure" : false,
+																		"lValueRequested" : false,
+																		"type" : "struct AtomicSwapERC20.Swap storage ref"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 26,
+																				"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+																				"value" : "swaps"
+																			},
+																			"id" : 115,
+																			"name" : "Identifier",
+																			"src" : "1181:5:0"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 110,
+																				"type" : "bytes32",
+																				"value" : "_swapID"
+																			},
+																			"id" : 116,
+																			"name" : "Identifier",
+																			"src" : "1187:7:0"
+																		}
+																	],
+																	"id" : 117,
+																	"name" : "IndexAccess",
+																	"src" : "1181:14:0"
+																}
+															],
+															"id" : 118,
+															"name" : "MemberAccess",
+															"src" : "1181:25:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"isStructConstructorCall" : false,
+																"lValueRequested" : false,
+																"names" : 
+																[
+																	null
+																],
+																"type" : "bytes32",
+																"type_conversion" : false
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : 
+																		[
+																			{
+																				"typeIdentifier" : "t_bytes_memory_ptr",
+																				"typeString" : "bytes memory"
+																			}
+																		],
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 469,
+																		"type" : "function (bytes memory) pure returns (bytes32)",
+																		"value" : "sha256"
+																	},
+																	"id" : 119,
+																	"name" : "Identifier",
+																	"src" : "1210:6:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 112,
+																		"type" : "bytes memory",
+																		"value" : "_secretKey"
+																	},
+																	"id" : 120,
+																	"name" : "Identifier",
+																	"src" : "1217:10:0"
+																}
+															],
+															"id" : 121,
+															"name" : "FunctionCall",
+															"src" : "1210:18:0"
+														}
+													],
+													"id" : 122,
+													"name" : "BinaryOperation",
+													"src" : "1181:47:0"
+												}
+											],
+											"id" : 123,
+											"name" : "FunctionCall",
+											"src" : "1172:57:0"
+										}
+									],
+									"id" : 124,
+									"name" : "ExpressionStatement",
+									"src" : "1172:57:0"
+								},
+								{
+									"id" : 125,
+									"name" : "PlaceholderStatement",
+									"src" : "1235:1:0"
+								}
+							],
+							"id" : 126,
+							"name" : "Block",
+							"src" : "1104:137:0"
+						}
+					],
+					"id" : 127,
+					"name" : "ModifierDefinition",
+					"src" : "1035:206:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"name" : "open",
+						"scope" : 379,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 221,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 128,
+											"name" : "ElementaryTypeName",
+											"src" : "1259:7:0"
+										}
+									],
+									"id" : 129,
+									"name" : "VariableDeclaration",
+									"src" : "1259:15:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_erc20Value",
+										"scope" : 221,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint256",
+												"type" : "uint256"
+											},
+											"id" : 130,
+											"name" : "ElementaryTypeName",
+											"src" : "1276:7:0"
+										}
+									],
+									"id" : 131,
+									"name" : "VariableDeclaration",
+									"src" : "1276:19:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_erc20ContractAddress",
+										"scope" : 221,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 132,
+											"name" : "ElementaryTypeName",
+											"src" : "1297:7:0"
+										}
+									],
+									"id" : 133,
+									"name" : "VariableDeclaration",
+									"src" : "1297:29:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_withdrawTrader",
+										"scope" : 221,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 134,
+											"name" : "ElementaryTypeName",
+											"src" : "1328:7:0"
+										}
+									],
+									"id" : 135,
+									"name" : "VariableDeclaration",
+									"src" : "1328:23:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_secretLock",
+										"scope" : 221,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 136,
+											"name" : "ElementaryTypeName",
+											"src" : "1353:7:0"
+										}
+									],
+									"id" : 137,
+									"name" : "VariableDeclaration",
+									"src" : "1353:19:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_timelock",
+										"scope" : 221,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint256",
+												"type" : "uint256"
+											},
+											"id" : 138,
+											"name" : "ElementaryTypeName",
+											"src" : "1374:7:0"
+										}
+									],
+									"id" : 139,
+									"name" : "VariableDeclaration",
+									"src" : "1374:17:0"
+								}
+							],
+							"id" : 140,
+							"name" : "ParameterList",
+							"src" : "1258:134:0"
+						},
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 144,
+							"name" : "ParameterList",
+							"src" : "1426:0:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 63,
+										"type" : "modifier (bytes32)",
+										"value" : "onlyInvalidSwaps"
+									},
+									"id" : 141,
+									"name" : "Identifier",
+									"src" : "1400:16:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 129,
+										"type" : "bytes32",
+										"value" : "_swapID"
+									},
+									"id" : 142,
+									"name" : "Identifier",
+									"src" : "1417:7:0"
+								}
+							],
+							"id" : 143,
+							"name" : "ModifierInvocation",
+							"src" : "1400:25:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 145,
+													"name" : "Identifier",
+													"src" : "1432:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_enum$_States_$22",
+															"typeString" : "enum AtomicSwapERC20.States"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "==",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 30,
+																		"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																		"value" : "swapStates"
+																	},
+																	"id" : 146,
+																	"name" : "Identifier",
+																	"src" : "1440:10:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 129,
+																		"type" : "bytes32",
+																		"value" : "_swapID"
+																	},
+																	"id" : 147,
+																	"name" : "Identifier",
+																	"src" : "1451:7:0"
+																}
+															],
+															"id" : 148,
+															"name" : "IndexAccess",
+															"src" : "1440:19:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"member_name" : "INVALID",
+																"referencedDeclaration" : null,
+																"type" : "enum AtomicSwapERC20.States"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 22,
+																		"type" : "type(enum AtomicSwapERC20.States)",
+																		"value" : "States"
+																	},
+																	"id" : 149,
+																	"name" : "Identifier",
+																	"src" : "1463:6:0"
+																}
+															],
+															"id" : 150,
+															"name" : "MemberAccess",
+															"src" : "1463:14:0"
+														}
+													],
+													"id" : 151,
+													"name" : "BinaryOperation",
+													"src" : "1440:37:0"
+												}
+											],
+											"id" : 152,
+											"name" : "FunctionCall",
+											"src" : "1432:46:0"
+										}
+									],
+									"id" : 153,
+									"name" : "ExpressionStatement",
+									"src" : "1432:46:0"
+								},
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											155
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "erc20Contract",
+												"scope" : 220,
+												"stateVariable" : false,
+												"storageLocation" : "default",
+												"type" : "contract ERC20",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "ERC20",
+														"referencedDeclaration" : 445,
+														"type" : "contract ERC20"
+													},
+													"id" : 154,
+													"name" : "UserDefinedTypeName",
+													"src" : "1546:5:0"
+												}
+											],
+											"id" : 155,
+											"name" : "VariableDeclaration",
+											"src" : "1546:19:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "contract ERC20",
+												"type_conversion" : true
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_address",
+																"typeString" : "address"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 445,
+														"type" : "type(contract ERC20)",
+														"value" : "ERC20"
+													},
+													"id" : 156,
+													"name" : "Identifier",
+													"src" : "1568:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 133,
+														"type" : "address",
+														"value" : "_erc20ContractAddress"
+													},
+													"id" : 157,
+													"name" : "Identifier",
+													"src" : "1574:21:0"
+												}
+											],
+											"id" : 158,
+											"name" : "FunctionCall",
+											"src" : "1568:28:0"
+										}
+									],
+									"id" : 159,
+									"name" : "VariableDeclarationStatement",
+									"src" : "1546:50:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 160,
+													"name" : "Identifier",
+													"src" : "1602:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"commonType" : 
+														{
+															"typeIdentifier" : "t_uint256",
+															"typeString" : "uint256"
+														},
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"operator" : "<=",
+														"type" : "bool"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 131,
+																"type" : "uint256",
+																"value" : "_erc20Value"
+															},
+															"id" : 161,
+															"name" : "Identifier",
+															"src" : "1610:11:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"isStructConstructorCall" : false,
+																"lValueRequested" : false,
+																"names" : 
+																[
+																	null
+																],
+																"type" : "uint256",
+																"type_conversion" : false
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : 
+																		[
+																			{
+																				"typeIdentifier" : "t_address_payable",
+																				"typeString" : "address payable"
+																			},
+																			{
+																				"typeIdentifier" : "t_address",
+																				"typeString" : "address"
+																			}
+																		],
+																		"isConstant" : false,
+																		"isLValue" : false,
+																		"isPure" : false,
+																		"lValueRequested" : false,
+																		"member_name" : "allowance",
+																		"referencedDeclaration" : 415,
+																		"type" : "function (address,address) view external returns (uint256)"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 155,
+																				"type" : "contract ERC20",
+																				"value" : "erc20Contract"
+																			},
+																			"id" : 162,
+																			"name" : "Identifier",
+																			"src" : "1625:13:0"
+																		}
+																	],
+																	"id" : 163,
+																	"name" : "MemberAccess",
+																	"src" : "1625:23:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"isConstant" : false,
+																		"isLValue" : false,
+																		"isPure" : false,
+																		"lValueRequested" : false,
+																		"member_name" : "sender",
+																		"referencedDeclaration" : null,
+																		"type" : "address payable"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 460,
+																				"type" : "msg",
+																				"value" : "msg"
+																			},
+																			"id" : 164,
+																			"name" : "Identifier",
+																			"src" : "1649:3:0"
+																		}
+																	],
+																	"id" : 165,
+																	"name" : "MemberAccess",
+																	"src" : "1649:10:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"isConstant" : false,
+																		"isLValue" : false,
+																		"isPure" : false,
+																		"isStructConstructorCall" : false,
+																		"lValueRequested" : false,
+																		"names" : 
+																		[
+																			null
+																		],
+																		"type" : "address",
+																		"type_conversion" : true
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : 
+																				[
+																					{
+																						"typeIdentifier" : "t_contract$_AtomicSwapERC20_$379",
+																						"typeString" : "contract AtomicSwapERC20"
+																					}
+																				],
+																				"isConstant" : false,
+																				"isLValue" : false,
+																				"isPure" : true,
+																				"lValueRequested" : false,
+																				"type" : "type(address)",
+																				"value" : "address"
+																			},
+																			"id" : 166,
+																			"name" : "ElementaryTypeNameExpression",
+																			"src" : "1661:7:0"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"overloadedDeclarations" : 
+																				[
+																					null
+																				],
+																				"referencedDeclaration" : 476,
+																				"type" : "contract AtomicSwapERC20",
+																				"value" : "this"
+																			},
+																			"id" : 167,
+																			"name" : "Identifier",
+																			"src" : "1669:4:0"
+																		}
+																	],
+																	"id" : 168,
+																	"name" : "FunctionCall",
+																	"src" : "1661:13:0"
+																}
+															],
+															"id" : 169,
+															"name" : "FunctionCall",
+															"src" : "1625:50:0"
+														}
+													],
+													"id" : 170,
+													"name" : "BinaryOperation",
+													"src" : "1610:65:0"
+												}
+											],
+											"id" : 171,
+											"name" : "FunctionCall",
+											"src" : "1602:74:0"
+										}
+									],
+									"id" : 172,
+									"name" : "ExpressionStatement",
+									"src" : "1602:74:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 173,
+													"name" : "Identifier",
+													"src" : "1682:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"isStructConstructorCall" : false,
+														"lValueRequested" : false,
+														"names" : 
+														[
+															null
+														],
+														"type" : "bool",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : 
+																[
+																	{
+																		"typeIdentifier" : "t_address_payable",
+																		"typeString" : "address payable"
+																	},
+																	{
+																		"typeIdentifier" : "t_address",
+																		"typeString" : "address"
+																	},
+																	{
+																		"typeIdentifier" : "t_uint256",
+																		"typeString" : "uint256"
+																	}
+																],
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "transferFrom",
+																"referencedDeclaration" : 435,
+																"type" : "function (address,address,uint256) external returns (bool)"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 155,
+																		"type" : "contract ERC20",
+																		"value" : "erc20Contract"
+																	},
+																	"id" : 174,
+																	"name" : "Identifier",
+																	"src" : "1690:13:0"
+																}
+															],
+															"id" : 175,
+															"name" : "MemberAccess",
+															"src" : "1690:26:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "sender",
+																"referencedDeclaration" : null,
+																"type" : "address payable"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 460,
+																		"type" : "msg",
+																		"value" : "msg"
+																	},
+																	"id" : 176,
+																	"name" : "Identifier",
+																	"src" : "1717:3:0"
+																}
+															],
+															"id" : 177,
+															"name" : "MemberAccess",
+															"src" : "1717:10:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"isStructConstructorCall" : false,
+																"lValueRequested" : false,
+																"names" : 
+																[
+																	null
+																],
+																"type" : "address",
+																"type_conversion" : true
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : 
+																		[
+																			{
+																				"typeIdentifier" : "t_contract$_AtomicSwapERC20_$379",
+																				"typeString" : "contract AtomicSwapERC20"
+																			}
+																		],
+																		"isConstant" : false,
+																		"isLValue" : false,
+																		"isPure" : true,
+																		"lValueRequested" : false,
+																		"type" : "type(address)",
+																		"value" : "address"
+																	},
+																	"id" : 178,
+																	"name" : "ElementaryTypeNameExpression",
+																	"src" : "1729:7:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 476,
+																		"type" : "contract AtomicSwapERC20",
+																		"value" : "this"
+																	},
+																	"id" : 179,
+																	"name" : "Identifier",
+																	"src" : "1737:4:0"
+																}
+															],
+															"id" : 180,
+															"name" : "FunctionCall",
+															"src" : "1729:13:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 131,
+																"type" : "uint256",
+																"value" : "_erc20Value"
+															},
+															"id" : 181,
+															"name" : "Identifier",
+															"src" : "1744:11:0"
+														}
+													],
+													"id" : 182,
+													"name" : "FunctionCall",
+													"src" : "1690:66:0"
+												}
+											],
+											"id" : 183,
+											"name" : "FunctionCall",
+											"src" : "1682:75:0"
+										}
+									],
+									"id" : 184,
+									"name" : "ExpressionStatement",
+									"src" : "1682:75:0"
+								},
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											186
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "swap",
+												"scope" : 220,
+												"stateVariable" : false,
+												"storageLocation" : "memory",
+												"type" : "struct AtomicSwapERC20.Swap",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "Swap",
+														"referencedDeclaration" : 17,
+														"type" : "struct AtomicSwapERC20.Swap"
+													},
+													"id" : 185,
+													"name" : "UserDefinedTypeName",
+													"src" : "1802:4:0"
+												}
+											],
+											"id" : 186,
+											"name" : "VariableDeclaration",
+											"src" : "1802:16:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : true,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													"timelock",
+													"erc20Value",
+													"erc20Trader",
+													"erc20ContractAddress",
+													"withdrawTrader",
+													"secretLock",
+													"secretKey"
+												],
+												"type" : "struct AtomicSwapERC20.Swap memory",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_uint256",
+																"typeString" : "uint256"
+															},
+															{
+																"typeIdentifier" : "t_uint256",
+																"typeString" : "uint256"
+															},
+															{
+																"typeIdentifier" : "t_address_payable",
+																"typeString" : "address payable"
+															},
+															{
+																"typeIdentifier" : "t_address",
+																"typeString" : "address"
+															},
+															{
+																"typeIdentifier" : "t_address",
+																"typeString" : "address"
+															},
+															{
+																"typeIdentifier" : "t_bytes32",
+																"typeString" : "bytes32"
+															},
+															{
+																"typeIdentifier" : "t_bytes_memory",
+																"typeString" : "bytes memory"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 17,
+														"type" : "type(struct AtomicSwapERC20.Swap storage pointer)",
+														"value" : "Swap"
+													},
+													"id" : 187,
+													"name" : "Identifier",
+													"src" : "1821:4:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 139,
+														"type" : "uint256",
+														"value" : "_timelock"
+													},
+													"id" : 188,
+													"name" : "Identifier",
+													"src" : "1844:9:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 131,
+														"type" : "uint256",
+														"value" : "_erc20Value"
+													},
+													"id" : 189,
+													"name" : "Identifier",
+													"src" : "1873:11:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "sender",
+														"referencedDeclaration" : null,
+														"type" : "address payable"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 460,
+																"type" : "msg",
+																"value" : "msg"
+															},
+															"id" : 190,
+															"name" : "Identifier",
+															"src" : "1905:3:0"
+														}
+													],
+													"id" : 191,
+													"name" : "MemberAccess",
+													"src" : "1905:10:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 133,
+														"type" : "address",
+														"value" : "_erc20ContractAddress"
+													},
+													"id" : 192,
+													"name" : "Identifier",
+													"src" : "1945:21:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 135,
+														"type" : "address",
+														"value" : "_withdrawTrader"
+													},
+													"id" : 193,
+													"name" : "Identifier",
+													"src" : "1990:15:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 137,
+														"type" : "bytes32",
+														"value" : "_secretLock"
+													},
+													"id" : 194,
+													"name" : "Identifier",
+													"src" : "2025:11:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : true,
+														"isStructConstructorCall" : false,
+														"lValueRequested" : false,
+														"names" : 
+														[
+															null
+														],
+														"type" : "bytes memory",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : 
+																[
+																	{
+																		"typeIdentifier" : "t_rational_0_by_1",
+																		"typeString" : "int_const 0"
+																	}
+																],
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"type" : "function (uint256) pure returns (bytes memory)"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"name" : "bytes",
+																		"type" : "bytes"
+																	},
+																	"id" : 195,
+																	"name" : "ElementaryTypeName",
+																	"src" : "2059:5:0"
+																}
+															],
+															"id" : 196,
+															"name" : "NewExpression",
+															"src" : "2055:9:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"hexvalue" : "30",
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"subdenomination" : null,
+																"token" : "number",
+																"type" : "int_const 0",
+																"value" : "0"
+															},
+															"id" : 197,
+															"name" : "Literal",
+															"src" : "2065:1:0"
+														}
+													],
+													"id" : 198,
+													"name" : "FunctionCall",
+													"src" : "2055:12:0"
+												}
+											],
+											"id" : 199,
+											"name" : "FunctionCall",
+											"src" : "1821:253:0"
+										}
+									],
+									"id" : 200,
+									"name" : "VariableDeclarationStatement",
+									"src" : "1802:272:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"operator" : "=",
+												"type" : "struct AtomicSwapERC20.Swap storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : true,
+														"type" : "struct AtomicSwapERC20.Swap storage ref"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 26,
+																"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+																"value" : "swaps"
+															},
+															"id" : 201,
+															"name" : "Identifier",
+															"src" : "2080:5:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 129,
+																"type" : "bytes32",
+																"value" : "_swapID"
+															},
+															"id" : 202,
+															"name" : "Identifier",
+															"src" : "2086:7:0"
+														}
+													],
+													"id" : 203,
+													"name" : "IndexAccess",
+													"src" : "2080:14:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 186,
+														"type" : "struct AtomicSwapERC20.Swap memory",
+														"value" : "swap"
+													},
+													"id" : 204,
+													"name" : "Identifier",
+													"src" : "2097:4:0"
+												}
+											],
+											"id" : 205,
+											"name" : "Assignment",
+											"src" : "2080:21:0"
+										}
+									],
+									"id" : 206,
+									"name" : "ExpressionStatement",
+									"src" : "2080:21:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"operator" : "=",
+												"type" : "enum AtomicSwapERC20.States"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : true,
+														"type" : "enum AtomicSwapERC20.States"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 30,
+																"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																"value" : "swapStates"
+															},
+															"id" : 207,
+															"name" : "Identifier",
+															"src" : "2107:10:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 129,
+																"type" : "bytes32",
+																"value" : "_swapID"
+															},
+															"id" : 208,
+															"name" : "Identifier",
+															"src" : "2118:7:0"
+														}
+													],
+													"id" : 209,
+													"name" : "IndexAccess",
+													"src" : "2107:19:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : true,
+														"lValueRequested" : false,
+														"member_name" : "OPEN",
+														"referencedDeclaration" : null,
+														"type" : "enum AtomicSwapERC20.States"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 22,
+																"type" : "type(enum AtomicSwapERC20.States)",
+																"value" : "States"
+															},
+															"id" : 210,
+															"name" : "Identifier",
+															"src" : "2129:6:0"
+														}
+													],
+													"id" : 211,
+													"name" : "MemberAccess",
+													"src" : "2129:11:0"
+												}
+											],
+											"id" : 212,
+											"name" : "Assignment",
+											"src" : "2107:33:0"
+										}
+									],
+									"id" : 213,
+									"name" : "ExpressionStatement",
+									"src" : "2107:33:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bytes32",
+																"typeString" : "bytes32"
+															},
+															{
+																"typeIdentifier" : "t_address",
+																"typeString" : "address"
+															},
+															{
+																"typeIdentifier" : "t_bytes32",
+																"typeString" : "bytes32"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 38,
+														"type" : "function (bytes32,address,bytes32)",
+														"value" : "Open"
+													},
+													"id" : 214,
+													"name" : "Identifier",
+													"src" : "2151:4:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 129,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 215,
+													"name" : "Identifier",
+													"src" : "2156:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 135,
+														"type" : "address",
+														"value" : "_withdrawTrader"
+													},
+													"id" : 216,
+													"name" : "Identifier",
+													"src" : "2165:15:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 137,
+														"type" : "bytes32",
+														"value" : "_secretLock"
+													},
+													"id" : 217,
+													"name" : "Identifier",
+													"src" : "2182:11:0"
+												}
+											],
+											"id" : 218,
+											"name" : "FunctionCall",
+											"src" : "2151:43:0"
+										}
+									],
+									"id" : 219,
+									"name" : "EmitStatement",
+									"src" : "2146:48:0"
+								}
+							],
+							"id" : 220,
+							"name" : "Block",
+							"src" : "1426:773:0"
+						}
+					],
+					"id" : 221,
+					"name" : "FunctionDefinition",
+					"src" : "1245:954:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"name" : "close",
+						"scope" : 379,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 278,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 222,
+											"name" : "ElementaryTypeName",
+											"src" : "2218:7:0"
+										}
+									],
+									"id" : 223,
+									"name" : "VariableDeclaration",
+									"src" : "2218:15:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_secretKey",
+										"scope" : 278,
+										"stateVariable" : false,
+										"storageLocation" : "memory",
+										"type" : "bytes",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes",
+												"type" : "bytes"
+											},
+											"id" : 224,
+											"name" : "ElementaryTypeName",
+											"src" : "2235:5:0"
+										}
+									],
+									"id" : 225,
+									"name" : "VariableDeclaration",
+									"src" : "2235:23:0"
+								}
+							],
+							"id" : 226,
+							"name" : "ParameterList",
+							"src" : "2217:42:0"
+						},
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 234,
+							"name" : "ParameterList",
+							"src" : "2329:0:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 78,
+										"type" : "modifier (bytes32)",
+										"value" : "onlyOpenSwaps"
+									},
+									"id" : 227,
+									"name" : "Identifier",
+									"src" : "2267:13:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 223,
+										"type" : "bytes32",
+										"value" : "_swapID"
+									},
+									"id" : 228,
+									"name" : "Identifier",
+									"src" : "2281:7:0"
+								}
+							],
+							"id" : 229,
+							"name" : "ModifierInvocation",
+							"src" : "2267:22:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 127,
+										"type" : "modifier (bytes32,bytes memory)",
+										"value" : "onlyWithSecretKey"
+									},
+									"id" : 230,
+									"name" : "Identifier",
+									"src" : "2290:17:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 223,
+										"type" : "bytes32",
+										"value" : "_swapID"
+									},
+									"id" : 231,
+									"name" : "Identifier",
+									"src" : "2308:7:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 225,
+										"type" : "bytes memory",
+										"value" : "_secretKey"
+									},
+									"id" : 232,
+									"name" : "Identifier",
+									"src" : "2317:10:0"
+								}
+							],
+							"id" : 233,
+							"name" : "ModifierInvocation",
+							"src" : "2290:38:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											236
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "swap",
+												"scope" : 277,
+												"stateVariable" : false,
+												"storageLocation" : "memory",
+												"type" : "struct AtomicSwapERC20.Swap",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "Swap",
+														"referencedDeclaration" : 17,
+														"type" : "struct AtomicSwapERC20.Swap"
+													},
+													"id" : 235,
+													"name" : "UserDefinedTypeName",
+													"src" : "2358:4:0"
+												}
+											],
+											"id" : 236,
+											"name" : "VariableDeclaration",
+											"src" : "2358:16:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : true,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"type" : "struct AtomicSwapERC20.Swap storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 26,
+														"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+														"value" : "swaps"
+													},
+													"id" : 237,
+													"name" : "Identifier",
+													"src" : "2377:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 223,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 238,
+													"name" : "Identifier",
+													"src" : "2383:7:0"
+												}
+											],
+											"id" : 239,
+											"name" : "IndexAccess",
+											"src" : "2377:14:0"
+										}
+									],
+									"id" : 240,
+									"name" : "VariableDeclarationStatement",
+									"src" : "2358:33:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"operator" : "=",
+												"type" : "bytes storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : true,
+														"member_name" : "secretKey",
+														"referencedDeclaration" : 16,
+														"type" : "bytes storage ref"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"type" : "struct AtomicSwapERC20.Swap storage ref"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 26,
+																		"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+																		"value" : "swaps"
+																	},
+																	"id" : 241,
+																	"name" : "Identifier",
+																	"src" : "2397:5:0"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 223,
+																		"type" : "bytes32",
+																		"value" : "_swapID"
+																	},
+																	"id" : 242,
+																	"name" : "Identifier",
+																	"src" : "2403:7:0"
+																}
+															],
+															"id" : 243,
+															"name" : "IndexAccess",
+															"src" : "2397:14:0"
+														}
+													],
+													"id" : 244,
+													"name" : "MemberAccess",
+													"src" : "2397:24:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 225,
+														"type" : "bytes memory",
+														"value" : "_secretKey"
+													},
+													"id" : 245,
+													"name" : "Identifier",
+													"src" : "2424:10:0"
+												}
+											],
+											"id" : 246,
+											"name" : "Assignment",
+											"src" : "2397:37:0"
+										}
+									],
+									"id" : 247,
+									"name" : "ExpressionStatement",
+									"src" : "2397:37:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"operator" : "=",
+												"type" : "enum AtomicSwapERC20.States"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : true,
+														"type" : "enum AtomicSwapERC20.States"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 30,
+																"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																"value" : "swapStates"
+															},
+															"id" : 248,
+															"name" : "Identifier",
+															"src" : "2440:10:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 223,
+																"type" : "bytes32",
+																"value" : "_swapID"
+															},
+															"id" : 249,
+															"name" : "Identifier",
+															"src" : "2451:7:0"
+														}
+													],
+													"id" : 250,
+													"name" : "IndexAccess",
+													"src" : "2440:19:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : true,
+														"lValueRequested" : false,
+														"member_name" : "CLOSED",
+														"referencedDeclaration" : null,
+														"type" : "enum AtomicSwapERC20.States"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 22,
+																"type" : "type(enum AtomicSwapERC20.States)",
+																"value" : "States"
+															},
+															"id" : 251,
+															"name" : "Identifier",
+															"src" : "2462:6:0"
+														}
+													],
+													"id" : 252,
+													"name" : "MemberAccess",
+													"src" : "2462:13:0"
+												}
+											],
+											"id" : 253,
+											"name" : "Assignment",
+											"src" : "2440:35:0"
+										}
+									],
+									"id" : 254,
+									"name" : "ExpressionStatement",
+									"src" : "2440:35:0"
+								},
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											256
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "erc20Contract",
+												"scope" : 277,
+												"stateVariable" : false,
+												"storageLocation" : "default",
+												"type" : "contract ERC20",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "ERC20",
+														"referencedDeclaration" : 445,
+														"type" : "contract ERC20"
+													},
+													"id" : 255,
+													"name" : "UserDefinedTypeName",
+													"src" : "2560:5:0"
+												}
+											],
+											"id" : 256,
+											"name" : "VariableDeclaration",
+											"src" : "2560:19:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "contract ERC20",
+												"type_conversion" : true
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_address",
+																"typeString" : "address"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 445,
+														"type" : "type(contract ERC20)",
+														"value" : "ERC20"
+													},
+													"id" : 257,
+													"name" : "Identifier",
+													"src" : "2582:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "erc20ContractAddress",
+														"referencedDeclaration" : 10,
+														"type" : "address"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 236,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 258,
+															"name" : "Identifier",
+															"src" : "2588:4:0"
+														}
+													],
+													"id" : 259,
+													"name" : "MemberAccess",
+													"src" : "2588:25:0"
+												}
+											],
+											"id" : 260,
+											"name" : "FunctionCall",
+											"src" : "2582:32:0"
+										}
+									],
+									"id" : 261,
+									"name" : "VariableDeclarationStatement",
+									"src" : "2560:54:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 262,
+													"name" : "Identifier",
+													"src" : "2620:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"isStructConstructorCall" : false,
+														"lValueRequested" : false,
+														"names" : 
+														[
+															null
+														],
+														"type" : "bool",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : 
+																[
+																	{
+																		"typeIdentifier" : "t_address",
+																		"typeString" : "address"
+																	},
+																	{
+																		"typeIdentifier" : "t_uint256",
+																		"typeString" : "uint256"
+																	}
+																],
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "transfer",
+																"referencedDeclaration" : 424,
+																"type" : "function (address,uint256) external returns (bool)"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 256,
+																		"type" : "contract ERC20",
+																		"value" : "erc20Contract"
+																	},
+																	"id" : 263,
+																	"name" : "Identifier",
+																	"src" : "2628:13:0"
+																}
+															],
+															"id" : 264,
+															"name" : "MemberAccess",
+															"src" : "2628:22:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "withdrawTrader",
+																"referencedDeclaration" : 12,
+																"type" : "address"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 236,
+																		"type" : "struct AtomicSwapERC20.Swap memory",
+																		"value" : "swap"
+																	},
+																	"id" : 265,
+																	"name" : "Identifier",
+																	"src" : "2651:4:0"
+																}
+															],
+															"id" : 266,
+															"name" : "MemberAccess",
+															"src" : "2651:19:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "erc20Value",
+																"referencedDeclaration" : 6,
+																"type" : "uint256"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 236,
+																		"type" : "struct AtomicSwapERC20.Swap memory",
+																		"value" : "swap"
+																	},
+																	"id" : 267,
+																	"name" : "Identifier",
+																	"src" : "2672:4:0"
+																}
+															],
+															"id" : 268,
+															"name" : "MemberAccess",
+															"src" : "2672:15:0"
+														}
+													],
+													"id" : 269,
+													"name" : "FunctionCall",
+													"src" : "2628:60:0"
+												}
+											],
+											"id" : 270,
+											"name" : "FunctionCall",
+											"src" : "2620:69:0"
+										}
+									],
+									"id" : 271,
+									"name" : "ExpressionStatement",
+									"src" : "2620:69:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bytes32",
+																"typeString" : "bytes32"
+															},
+															{
+																"typeIdentifier" : "t_bytes_memory_ptr",
+																"typeString" : "bytes memory"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 48,
+														"type" : "function (bytes32,bytes memory)",
+														"value" : "Close"
+													},
+													"id" : 272,
+													"name" : "Identifier",
+													"src" : "2701:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 223,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 273,
+													"name" : "Identifier",
+													"src" : "2707:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 225,
+														"type" : "bytes memory",
+														"value" : "_secretKey"
+													},
+													"id" : 274,
+													"name" : "Identifier",
+													"src" : "2716:10:0"
+												}
+											],
+											"id" : 275,
+											"name" : "FunctionCall",
+											"src" : "2701:26:0"
+										}
+									],
+									"id" : 276,
+									"name" : "EmitStatement",
+									"src" : "2696:31:0"
+								}
+							],
+							"id" : 277,
+							"name" : "Block",
+							"src" : "2329:407:0"
+						}
+					],
+					"id" : 278,
+					"name" : "FunctionDefinition",
+					"src" : "2203:533:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"name" : "expire",
+						"scope" : 379,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 324,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 279,
+											"name" : "ElementaryTypeName",
+											"src" : "2756:7:0"
+										}
+									],
+									"id" : 280,
+									"name" : "VariableDeclaration",
+									"src" : "2756:15:0"
+								}
+							],
+							"id" : 281,
+							"name" : "ParameterList",
+							"src" : "2755:17:0"
+						},
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 288,
+							"name" : "ParameterList",
+							"src" : "2831:0:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 78,
+										"type" : "modifier (bytes32)",
+										"value" : "onlyOpenSwaps"
+									},
+									"id" : 282,
+									"name" : "Identifier",
+									"src" : "2780:13:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 280,
+										"type" : "bytes32",
+										"value" : "_swapID"
+									},
+									"id" : 283,
+									"name" : "Identifier",
+									"src" : "2794:7:0"
+								}
+							],
+							"id" : 284,
+							"name" : "ModifierInvocation",
+							"src" : "2780:22:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 108,
+										"type" : "modifier (bytes32)",
+										"value" : "onlyExpirableSwaps"
+									},
+									"id" : 285,
+									"name" : "Identifier",
+									"src" : "2803:18:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 280,
+										"type" : "bytes32",
+										"value" : "_swapID"
+									},
+									"id" : 286,
+									"name" : "Identifier",
+									"src" : "2822:7:0"
+								}
+							],
+							"id" : 287,
+							"name" : "ModifierInvocation",
+							"src" : "2803:27:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											290
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "swap",
+												"scope" : 323,
+												"stateVariable" : false,
+												"storageLocation" : "memory",
+												"type" : "struct AtomicSwapERC20.Swap",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "Swap",
+														"referencedDeclaration" : 17,
+														"type" : "struct AtomicSwapERC20.Swap"
+													},
+													"id" : 289,
+													"name" : "UserDefinedTypeName",
+													"src" : "2861:4:0"
+												}
+											],
+											"id" : 290,
+											"name" : "VariableDeclaration",
+											"src" : "2861:16:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : true,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"type" : "struct AtomicSwapERC20.Swap storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 26,
+														"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+														"value" : "swaps"
+													},
+													"id" : 291,
+													"name" : "Identifier",
+													"src" : "2880:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 280,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 292,
+													"name" : "Identifier",
+													"src" : "2886:7:0"
+												}
+											],
+											"id" : 293,
+											"name" : "IndexAccess",
+											"src" : "2880:14:0"
+										}
+									],
+									"id" : 294,
+									"name" : "VariableDeclarationStatement",
+									"src" : "2861:33:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"operator" : "=",
+												"type" : "enum AtomicSwapERC20.States"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : true,
+														"type" : "enum AtomicSwapERC20.States"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 30,
+																"type" : "mapping(bytes32 => enum AtomicSwapERC20.States)",
+																"value" : "swapStates"
+															},
+															"id" : 295,
+															"name" : "Identifier",
+															"src" : "2900:10:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 280,
+																"type" : "bytes32",
+																"value" : "_swapID"
+															},
+															"id" : 296,
+															"name" : "Identifier",
+															"src" : "2911:7:0"
+														}
+													],
+													"id" : 297,
+													"name" : "IndexAccess",
+													"src" : "2900:19:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : true,
+														"lValueRequested" : false,
+														"member_name" : "EXPIRED",
+														"referencedDeclaration" : null,
+														"type" : "enum AtomicSwapERC20.States"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 22,
+																"type" : "type(enum AtomicSwapERC20.States)",
+																"value" : "States"
+															},
+															"id" : 298,
+															"name" : "Identifier",
+															"src" : "2922:6:0"
+														}
+													],
+													"id" : 299,
+													"name" : "MemberAccess",
+													"src" : "2922:14:0"
+												}
+											],
+											"id" : 300,
+											"name" : "Assignment",
+											"src" : "2900:36:0"
+										}
+									],
+									"id" : 301,
+									"name" : "ExpressionStatement",
+									"src" : "2900:36:0"
+								},
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											303
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "erc20Contract",
+												"scope" : 323,
+												"stateVariable" : false,
+												"storageLocation" : "default",
+												"type" : "contract ERC20",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "ERC20",
+														"referencedDeclaration" : 445,
+														"type" : "contract ERC20"
+													},
+													"id" : 302,
+													"name" : "UserDefinedTypeName",
+													"src" : "3020:5:0"
+												}
+											],
+											"id" : 303,
+											"name" : "VariableDeclaration",
+											"src" : "3020:19:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "contract ERC20",
+												"type_conversion" : true
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_address",
+																"typeString" : "address"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 445,
+														"type" : "type(contract ERC20)",
+														"value" : "ERC20"
+													},
+													"id" : 304,
+													"name" : "Identifier",
+													"src" : "3042:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "erc20ContractAddress",
+														"referencedDeclaration" : 10,
+														"type" : "address"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 290,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 305,
+															"name" : "Identifier",
+															"src" : "3048:4:0"
+														}
+													],
+													"id" : 306,
+													"name" : "MemberAccess",
+													"src" : "3048:25:0"
+												}
+											],
+											"id" : 307,
+											"name" : "FunctionCall",
+											"src" : "3042:32:0"
+										}
+									],
+									"id" : 308,
+									"name" : "VariableDeclarationStatement",
+									"src" : "3020:54:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bool",
+																"typeString" : "bool"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															463,
+															464
+														],
+														"referencedDeclaration" : 463,
+														"type" : "function (bool) pure",
+														"value" : "require"
+													},
+													"id" : 309,
+													"name" : "Identifier",
+													"src" : "3080:7:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"isStructConstructorCall" : false,
+														"lValueRequested" : false,
+														"names" : 
+														[
+															null
+														],
+														"type" : "bool",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : 
+																[
+																	{
+																		"typeIdentifier" : "t_address",
+																		"typeString" : "address"
+																	},
+																	{
+																		"typeIdentifier" : "t_uint256",
+																		"typeString" : "uint256"
+																	}
+																],
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "transfer",
+																"referencedDeclaration" : 424,
+																"type" : "function (address,uint256) external returns (bool)"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 303,
+																		"type" : "contract ERC20",
+																		"value" : "erc20Contract"
+																	},
+																	"id" : 310,
+																	"name" : "Identifier",
+																	"src" : "3088:13:0"
+																}
+															],
+															"id" : 311,
+															"name" : "MemberAccess",
+															"src" : "3088:22:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "erc20Trader",
+																"referencedDeclaration" : 8,
+																"type" : "address"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 290,
+																		"type" : "struct AtomicSwapERC20.Swap memory",
+																		"value" : "swap"
+																	},
+																	"id" : 312,
+																	"name" : "Identifier",
+																	"src" : "3111:4:0"
+																}
+															],
+															"id" : 313,
+															"name" : "MemberAccess",
+															"src" : "3111:16:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"isConstant" : false,
+																"isLValue" : true,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "erc20Value",
+																"referencedDeclaration" : 6,
+																"type" : "uint256"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"overloadedDeclarations" : 
+																		[
+																			null
+																		],
+																		"referencedDeclaration" : 290,
+																		"type" : "struct AtomicSwapERC20.Swap memory",
+																		"value" : "swap"
+																	},
+																	"id" : 314,
+																	"name" : "Identifier",
+																	"src" : "3129:4:0"
+																}
+															],
+															"id" : 315,
+															"name" : "MemberAccess",
+															"src" : "3129:15:0"
+														}
+													],
+													"id" : 316,
+													"name" : "FunctionCall",
+													"src" : "3088:57:0"
+												}
+											],
+											"id" : 317,
+											"name" : "FunctionCall",
+											"src" : "3080:66:0"
+										}
+									],
+									"id" : 318,
+									"name" : "ExpressionStatement",
+									"src" : "3080:66:0"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															{
+																"typeIdentifier" : "t_bytes32",
+																"typeString" : "bytes32"
+															}
+														],
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 42,
+														"type" : "function (bytes32)",
+														"value" : "Expire"
+													},
+													"id" : 319,
+													"name" : "Identifier",
+													"src" : "3158:6:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 280,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 320,
+													"name" : "Identifier",
+													"src" : "3165:7:0"
+												}
+											],
+											"id" : 321,
+											"name" : "FunctionCall",
+											"src" : "3158:15:0"
+										}
+									],
+									"id" : 322,
+									"name" : "EmitStatement",
+									"src" : "3153:20:0"
+								}
+							],
+							"id" : 323,
+							"name" : "Block",
+							"src" : "2831:347:0"
+						}
+					],
+					"id" : 324,
+					"name" : "FunctionDefinition",
+					"src" : "2740:438:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "check",
+						"scope" : 379,
+						"stateMutability" : "view",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 358,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 325,
+											"name" : "ElementaryTypeName",
+											"src" : "3197:7:0"
+										}
+									],
+									"id" : 326,
+									"name" : "VariableDeclaration",
+									"src" : "3197:15:0"
+								}
+							],
+							"id" : 327,
+							"name" : "ParameterList",
+							"src" : "3196:17:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "timelock",
+										"scope" : 358,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint256",
+												"type" : "uint256"
+											},
+											"id" : 328,
+											"name" : "ElementaryTypeName",
+											"src" : "3235:7:0"
+										}
+									],
+									"id" : 329,
+									"name" : "VariableDeclaration",
+									"src" : "3235:16:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "erc20Value",
+										"scope" : 358,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint256",
+												"type" : "uint256"
+											},
+											"id" : 330,
+											"name" : "ElementaryTypeName",
+											"src" : "3253:7:0"
+										}
+									],
+									"id" : 331,
+									"name" : "VariableDeclaration",
+									"src" : "3253:18:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "erc20ContractAddress",
+										"scope" : 358,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 332,
+											"name" : "ElementaryTypeName",
+											"src" : "3273:7:0"
+										}
+									],
+									"id" : 333,
+									"name" : "VariableDeclaration",
+									"src" : "3273:28:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "withdrawTrader",
+										"scope" : 358,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 334,
+											"name" : "ElementaryTypeName",
+											"src" : "3303:7:0"
+										}
+									],
+									"id" : 335,
+									"name" : "VariableDeclaration",
+									"src" : "3303:22:0"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "secretLock",
+										"scope" : 358,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 336,
+											"name" : "ElementaryTypeName",
+											"src" : "3327:7:0"
+										}
+									],
+									"id" : 337,
+									"name" : "VariableDeclaration",
+									"src" : "3327:18:0"
+								}
+							],
+							"id" : 338,
+							"name" : "ParameterList",
+							"src" : "3234:112:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											340
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "swap",
+												"scope" : 357,
+												"stateVariable" : false,
+												"storageLocation" : "memory",
+												"type" : "struct AtomicSwapERC20.Swap",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "Swap",
+														"referencedDeclaration" : 17,
+														"type" : "struct AtomicSwapERC20.Swap"
+													},
+													"id" : 339,
+													"name" : "UserDefinedTypeName",
+													"src" : "3353:4:0"
+												}
+											],
+											"id" : 340,
+											"name" : "VariableDeclaration",
+											"src" : "3353:16:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : true,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"type" : "struct AtomicSwapERC20.Swap storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 26,
+														"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+														"value" : "swaps"
+													},
+													"id" : 341,
+													"name" : "Identifier",
+													"src" : "3372:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 326,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 342,
+													"name" : "Identifier",
+													"src" : "3378:7:0"
+												}
+											],
+											"id" : 343,
+											"name" : "IndexAccess",
+											"src" : "3372:14:0"
+										}
+									],
+									"id" : 344,
+									"name" : "VariableDeclarationStatement",
+									"src" : "3353:33:0"
+								},
+								{
+									"attributes" : 
+									{
+										"functionReturnParameters" : 338
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isInlineArray" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"type" : "tuple(uint256,uint256,address,address,bytes32)"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "timelock",
+														"referencedDeclaration" : 4,
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 340,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 345,
+															"name" : "Identifier",
+															"src" : "3400:4:0"
+														}
+													],
+													"id" : 346,
+													"name" : "MemberAccess",
+													"src" : "3400:13:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "erc20Value",
+														"referencedDeclaration" : 6,
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 340,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 347,
+															"name" : "Identifier",
+															"src" : "3415:4:0"
+														}
+													],
+													"id" : 348,
+													"name" : "MemberAccess",
+													"src" : "3415:15:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "erc20ContractAddress",
+														"referencedDeclaration" : 10,
+														"type" : "address"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 340,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 349,
+															"name" : "Identifier",
+															"src" : "3432:4:0"
+														}
+													],
+													"id" : 350,
+													"name" : "MemberAccess",
+													"src" : "3432:25:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "withdrawTrader",
+														"referencedDeclaration" : 12,
+														"type" : "address"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 340,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 351,
+															"name" : "Identifier",
+															"src" : "3459:4:0"
+														}
+													],
+													"id" : 352,
+													"name" : "MemberAccess",
+													"src" : "3459:19:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"isConstant" : false,
+														"isLValue" : true,
+														"isPure" : false,
+														"lValueRequested" : false,
+														"member_name" : "secretLock",
+														"referencedDeclaration" : 14,
+														"type" : "bytes32"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"overloadedDeclarations" : 
+																[
+																	null
+																],
+																"referencedDeclaration" : 340,
+																"type" : "struct AtomicSwapERC20.Swap memory",
+																"value" : "swap"
+															},
+															"id" : 353,
+															"name" : "Identifier",
+															"src" : "3480:4:0"
+														}
+													],
+													"id" : 354,
+													"name" : "MemberAccess",
+													"src" : "3480:15:0"
+												}
+											],
+											"id" : 355,
+											"name" : "TupleExpression",
+											"src" : "3399:97:0"
+										}
+									],
+									"id" : 356,
+									"name" : "Return",
+									"src" : "3392:104:0"
+								}
+							],
+							"id" : 357,
+							"name" : "Block",
+							"src" : "3347:154:0"
+						}
+					],
+					"id" : 358,
+					"name" : "FunctionDefinition",
+					"src" : "3182:319:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"name" : "checkSecretKey",
+						"scope" : 379,
+						"stateMutability" : "view",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "_swapID",
+										"scope" : 378,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bytes32",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes32",
+												"type" : "bytes32"
+											},
+											"id" : 359,
+											"name" : "ElementaryTypeName",
+											"src" : "3529:7:0"
+										}
+									],
+									"id" : 360,
+									"name" : "VariableDeclaration",
+									"src" : "3529:15:0"
+								}
+							],
+							"id" : 361,
+							"name" : "ParameterList",
+							"src" : "3528:17:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "secretKey",
+										"scope" : 378,
+										"stateVariable" : false,
+										"storageLocation" : "memory",
+										"type" : "bytes",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bytes",
+												"type" : "bytes"
+											},
+											"id" : 365,
+											"name" : "ElementaryTypeName",
+											"src" : "3592:5:0"
+										}
+									],
+									"id" : 366,
+									"name" : "VariableDeclaration",
+									"src" : "3592:22:0"
+								}
+							],
+							"id" : 367,
+							"name" : "ParameterList",
+							"src" : "3591:24:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 93,
+										"type" : "modifier (bytes32)",
+										"value" : "onlyClosedSwaps"
+									},
+									"id" : 362,
+									"name" : "Identifier",
+									"src" : "3558:15:0"
+								},
+								{
+									"attributes" : 
+									{
+										"argumentTypes" : null,
+										"overloadedDeclarations" : 
+										[
+											null
+										],
+										"referencedDeclaration" : 360,
+										"type" : "bytes32",
+										"value" : "_swapID"
+									},
+									"id" : 363,
+									"name" : "Identifier",
+									"src" : "3574:7:0"
+								}
+							],
+							"id" : 364,
+							"name" : "ModifierInvocation",
+							"src" : "3558:24:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"assignments" : 
+										[
+											369
+										]
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"constant" : false,
+												"name" : "swap",
+												"scope" : 377,
+												"stateVariable" : false,
+												"storageLocation" : "memory",
+												"type" : "struct AtomicSwapERC20.Swap",
+												"value" : null,
+												"visibility" : "internal"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"contractScope" : null,
+														"name" : "Swap",
+														"referencedDeclaration" : 17,
+														"type" : "struct AtomicSwapERC20.Swap"
+													},
+													"id" : 368,
+													"name" : "UserDefinedTypeName",
+													"src" : "3622:4:0"
+												}
+											],
+											"id" : 369,
+											"name" : "VariableDeclaration",
+											"src" : "3622:16:0"
+										},
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : true,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"type" : "struct AtomicSwapERC20.Swap storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 26,
+														"type" : "mapping(bytes32 => struct AtomicSwapERC20.Swap storage ref)",
+														"value" : "swaps"
+													},
+													"id" : 370,
+													"name" : "Identifier",
+													"src" : "3641:5:0"
+												},
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 360,
+														"type" : "bytes32",
+														"value" : "_swapID"
+													},
+													"id" : 371,
+													"name" : "Identifier",
+													"src" : "3647:7:0"
+												}
+											],
+											"id" : 372,
+											"name" : "IndexAccess",
+											"src" : "3641:14:0"
+										}
+									],
+									"id" : 373,
+									"name" : "VariableDeclarationStatement",
+									"src" : "3622:33:0"
+								},
+								{
+									"attributes" : 
+									{
+										"functionReturnParameters" : 367
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"isConstant" : false,
+												"isLValue" : true,
+												"isPure" : false,
+												"lValueRequested" : false,
+												"member_name" : "secretKey",
+												"referencedDeclaration" : 16,
+												"type" : "bytes memory"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : null,
+														"overloadedDeclarations" : 
+														[
+															null
+														],
+														"referencedDeclaration" : 369,
+														"type" : "struct AtomicSwapERC20.Swap memory",
+														"value" : "swap"
+													},
+													"id" : 374,
+													"name" : "Identifier",
+													"src" : "3668:4:0"
+												}
+											],
+											"id" : 375,
+											"name" : "MemberAccess",
+											"src" : "3668:14:0"
+										}
+									],
+									"id" : 376,
+									"name" : "Return",
+									"src" : "3661:21:0"
+								}
+							],
+							"id" : 377,
+							"name" : "Block",
+							"src" : "3616:71:0"
+						}
+					],
+					"id" : 378,
+					"name" : "FunctionDefinition",
+					"src" : "3505:182:0"
+				}
+			],
+			"id" : 379,
+			"name" : "ContractDefinition",
+			"src" : "49:3640:0"
+		}
+	],
+	"id" : 380,
+	"name" : "SourceUnit",
+	"src" : "0:3690:0"
+}
+======= ERC20.sol =======
+{
+	"attributes" : 
+	{
+		"absolutePath" : "ERC20.sol",
+		"exportedSymbols" : 
+		{
+			"ERC20" : 
+			[
+				445
+			]
+		}
+	},
+	"children" : 
+	[
+		{
+			"attributes" : 
+			{
+				"literals" : 
+				[
+					"solidity",
+					"^",
+					"0.5",
+					".11"
+				]
+			},
+			"id" : 381,
+			"name" : "PragmaDirective",
+			"src" : "0:24:1"
+		},
+		{
+			"attributes" : 
+			{
+				"baseContracts" : 
+				[
+					null
+				],
+				"contractDependencies" : 
+				[
+					null
+				],
+				"contractKind" : "contract",
+				"documentation" : null,
+				"fullyImplemented" : false,
+				"linearizedBaseContracts" : 
+				[
+					445
+				],
+				"name" : "ERC20",
+				"scope" : 446
+			},
+			"children" : 
+			[
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "totalSupply",
+						"scope" : 445,
+						"stateVariable" : true,
+						"storageLocation" : "default",
+						"type" : "uint256",
+						"value" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint",
+								"type" : "uint256"
+							},
+							"id" : 382,
+							"name" : "ElementaryTypeName",
+							"src" : "45:4:1"
+						}
+					],
+					"id" : 383,
+					"name" : "VariableDeclaration",
+					"src" : "45:23:1"
+				},
+				{
+					"attributes" : 
+					{
+						"anonymous" : false,
+						"documentation" : null,
+						"name" : "Transfer"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : true,
+										"name" : "from",
+										"scope" : 391,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 384,
+											"name" : "ElementaryTypeName",
+											"src" : "88:7:1"
+										}
+									],
+									"id" : 385,
+									"name" : "VariableDeclaration",
+									"src" : "88:20:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : true,
+										"name" : "to",
+										"scope" : 391,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 386,
+											"name" : "ElementaryTypeName",
+											"src" : "110:7:1"
+										}
+									],
+									"id" : 387,
+									"name" : "VariableDeclaration",
+									"src" : "110:18:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "value",
+										"scope" : 391,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 388,
+											"name" : "ElementaryTypeName",
+											"src" : "130:4:1"
+										}
+									],
+									"id" : 389,
+									"name" : "VariableDeclaration",
+									"src" : "130:10:1"
+								}
+							],
+							"id" : 390,
+							"name" : "ParameterList",
+							"src" : "87:54:1"
+						}
+					],
+					"id" : 391,
+					"name" : "EventDefinition",
+					"src" : "73:69:1"
+				},
+				{
+					"attributes" : 
+					{
+						"anonymous" : false,
+						"documentation" : null,
+						"name" : "Approval"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : true,
+										"name" : "owner",
+										"scope" : 399,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 392,
+											"name" : "ElementaryTypeName",
+											"src" : "162:7:1"
+										}
+									],
+									"id" : 393,
+									"name" : "VariableDeclaration",
+									"src" : "162:21:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : true,
+										"name" : "spender",
+										"scope" : 399,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 394,
+											"name" : "ElementaryTypeName",
+											"src" : "185:7:1"
+										}
+									],
+									"id" : 395,
+									"name" : "VariableDeclaration",
+									"src" : "185:23:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"indexed" : false,
+										"name" : "value",
+										"scope" : 399,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 396,
+											"name" : "ElementaryTypeName",
+											"src" : "210:4:1"
+										}
+									],
+									"id" : 397,
+									"name" : "VariableDeclaration",
+									"src" : "210:10:1"
+								}
+							],
+							"id" : 398,
+							"name" : "ParameterList",
+							"src" : "161:60:1"
+						}
+					],
+					"id" : 399,
+					"name" : "EventDefinition",
+					"src" : "147:75:1"
+				},
+				{
+					"attributes" : 
+					{
+						"body" : null,
+						"documentation" : null,
+						"implemented" : false,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "balanceOf",
+						"scope" : 445,
+						"stateMutability" : "view",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "who",
+										"scope" : 406,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 400,
+											"name" : "ElementaryTypeName",
+											"src" : "245:7:1"
+										}
+									],
+									"id" : 401,
+									"name" : "VariableDeclaration",
+									"src" : "245:11:1"
+								}
+							],
+							"id" : 402,
+							"name" : "ParameterList",
+							"src" : "244:13:1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "",
+										"scope" : 406,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 403,
+											"name" : "ElementaryTypeName",
+											"src" : "279:4:1"
+										}
+									],
+									"id" : 404,
+									"name" : "VariableDeclaration",
+									"src" : "279:4:1"
+								}
+							],
+							"id" : 405,
+							"name" : "ParameterList",
+							"src" : "278:6:1"
+						}
+					],
+					"id" : 406,
+					"name" : "FunctionDefinition",
+					"src" : "226:59:1"
+				},
+				{
+					"attributes" : 
+					{
+						"body" : null,
+						"documentation" : null,
+						"implemented" : false,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "allowance",
+						"scope" : 445,
+						"stateMutability" : "view",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "owner",
+										"scope" : 415,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 407,
+											"name" : "ElementaryTypeName",
+											"src" : "307:7:1"
+										}
+									],
+									"id" : 408,
+									"name" : "VariableDeclaration",
+									"src" : "307:13:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "spender",
+										"scope" : 415,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 409,
+											"name" : "ElementaryTypeName",
+											"src" : "322:7:1"
+										}
+									],
+									"id" : 410,
+									"name" : "VariableDeclaration",
+									"src" : "322:15:1"
+								}
+							],
+							"id" : 411,
+							"name" : "ParameterList",
+							"src" : "306:32:1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "",
+										"scope" : 415,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 412,
+											"name" : "ElementaryTypeName",
+											"src" : "360:4:1"
+										}
+									],
+									"id" : 413,
+									"name" : "VariableDeclaration",
+									"src" : "360:4:1"
+								}
+							],
+							"id" : 414,
+							"name" : "ParameterList",
+							"src" : "359:6:1"
+						}
+					],
+					"id" : 415,
+					"name" : "FunctionDefinition",
+					"src" : "288:78:1"
+				},
+				{
+					"attributes" : 
+					{
+						"body" : null,
+						"documentation" : null,
+						"implemented" : false,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "transfer",
+						"scope" : 445,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "to",
+										"scope" : 424,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 416,
+											"name" : "ElementaryTypeName",
+											"src" : "388:7:1"
+										}
+									],
+									"id" : 417,
+									"name" : "VariableDeclaration",
+									"src" : "388:10:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "value",
+										"scope" : 424,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 418,
+											"name" : "ElementaryTypeName",
+											"src" : "400:4:1"
+										}
+									],
+									"id" : 419,
+									"name" : "VariableDeclaration",
+									"src" : "400:10:1"
+								}
+							],
+							"id" : 420,
+							"name" : "ParameterList",
+							"src" : "387:24:1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "ok",
+										"scope" : 424,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bool",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bool",
+												"type" : "bool"
+											},
+											"id" : 421,
+											"name" : "ElementaryTypeName",
+											"src" : "428:4:1"
+										}
+									],
+									"id" : 422,
+									"name" : "VariableDeclaration",
+									"src" : "428:7:1"
+								}
+							],
+							"id" : 423,
+							"name" : "ParameterList",
+							"src" : "427:9:1"
+						}
+					],
+					"id" : 424,
+					"name" : "FunctionDefinition",
+					"src" : "370:67:1"
+				},
+				{
+					"attributes" : 
+					{
+						"body" : null,
+						"documentation" : null,
+						"implemented" : false,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "transferFrom",
+						"scope" : 445,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "from",
+										"scope" : 435,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 425,
+											"name" : "ElementaryTypeName",
+											"src" : "462:7:1"
+										}
+									],
+									"id" : 426,
+									"name" : "VariableDeclaration",
+									"src" : "462:12:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "to",
+										"scope" : 435,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 427,
+											"name" : "ElementaryTypeName",
+											"src" : "476:7:1"
+										}
+									],
+									"id" : 428,
+									"name" : "VariableDeclaration",
+									"src" : "476:10:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "value",
+										"scope" : 435,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 429,
+											"name" : "ElementaryTypeName",
+											"src" : "488:4:1"
+										}
+									],
+									"id" : 430,
+									"name" : "VariableDeclaration",
+									"src" : "488:10:1"
+								}
+							],
+							"id" : 431,
+							"name" : "ParameterList",
+							"src" : "461:38:1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "ok",
+										"scope" : 435,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bool",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bool",
+												"type" : "bool"
+											},
+											"id" : 432,
+											"name" : "ElementaryTypeName",
+											"src" : "516:4:1"
+										}
+									],
+									"id" : 433,
+									"name" : "VariableDeclaration",
+									"src" : "516:7:1"
+								}
+							],
+							"id" : 434,
+							"name" : "ParameterList",
+							"src" : "515:9:1"
+						}
+					],
+					"id" : 435,
+					"name" : "FunctionDefinition",
+					"src" : "440:85:1"
+				},
+				{
+					"attributes" : 
+					{
+						"body" : null,
+						"documentation" : null,
+						"implemented" : false,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "approve",
+						"scope" : 445,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "spender",
+										"scope" : 444,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "address",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address",
+												"stateMutability" : "nonpayable",
+												"type" : "address"
+											},
+											"id" : 436,
+											"name" : "ElementaryTypeName",
+											"src" : "545:7:1"
+										}
+									],
+									"id" : 437,
+									"name" : "VariableDeclaration",
+									"src" : "545:15:1"
+								},
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "value",
+										"scope" : 444,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "uint256",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint",
+												"type" : "uint256"
+											},
+											"id" : 438,
+											"name" : "ElementaryTypeName",
+											"src" : "562:4:1"
+										}
+									],
+									"id" : 439,
+									"name" : "VariableDeclaration",
+									"src" : "562:10:1"
+								}
+							],
+							"id" : 440,
+							"name" : "ParameterList",
+							"src" : "544:29:1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"constant" : false,
+										"name" : "ok",
+										"scope" : 444,
+										"stateVariable" : false,
+										"storageLocation" : "default",
+										"type" : "bool",
+										"value" : null,
+										"visibility" : "internal"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "bool",
+												"type" : "bool"
+											},
+											"id" : 441,
+											"name" : "ElementaryTypeName",
+											"src" : "590:4:1"
+										}
+									],
+									"id" : 442,
+									"name" : "VariableDeclaration",
+									"src" : "590:7:1"
+								}
+							],
+							"id" : 443,
+							"name" : "ParameterList",
+							"src" : "589:9:1"
+						}
+					],
+					"id" : 444,
+					"name" : "FunctionDefinition",
+					"src" : "528:71:1"
+				}
+			],
+			"id" : 445,
+			"name" : "ContractDefinition",
+			"src" : "26:577:1"
+		}
+	],
+	"id" : 446,
+	"name" : "SourceUnit",
+	"src" : "0:604:1"
+}

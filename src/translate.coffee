@@ -185,7 +185,7 @@ type2default_value = (type)->
         jl.push ret
         ret = ''
       jl = jl.filter (t)-> t != ''
-      if ctx.in_fn
+      if ctx.in_fn and !ast._phantom # HACK
         body = ""
         if jl.length
           body = """

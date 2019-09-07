@@ -152,6 +152,24 @@ module.exports = (root)->
         ret.scope= walk_exec ast_tree.body, ctx
         ret
       
+      when 'ForStatement'
+        ret = new ast.Scope
+        ret._phantom = true # HACK
+        if ast_tree.initializationExpression
+          ret.list.push walk_exec ast_tree.initializationExpression, ctx
+        ret.list.push inner = new ast.While
+        inner.cond = walk_exec ast_tree.condition, ctx
+        
+        loc = walk_exec ast_tree.body, ctx
+        if loc.constructor.name == 'Scope'
+          inner.scope = loc
+        else
+          inner.scope.list.push loc
+        
+        # т.к. у нас нет continue, то можно
+        inner.scope.list.push walk_exec ast_tree.loopExpression, ctx
+        ret
+      
       # ###################################################################################################
       #    control flow
       # ###################################################################################################

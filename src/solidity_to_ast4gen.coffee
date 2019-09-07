@@ -9,6 +9,10 @@ bin_op_map =
   '/'   : 'DIV'
   '%'   : 'MOD'
   
+  '&' : 'BIT_AND'
+  '|' : 'BIT_OR'
+  '^' : 'BIT_XOR'
+  
   '&&' : 'BOOL_AND'
   '||' : 'BOOL_OR'
   
@@ -177,7 +181,10 @@ module.exports = (root)->
         if ast_tree.modifiers.length
           throw new "ast_tree.modifiers not implemented"
         
-        fn.scope = walk_exec ast_tree.body, ctx
+        if ast_tree.body
+          fn.scope = walk_exec ast_tree.body, ctx
+        else
+          fn.scope = new ast.Scope
         fn
         
       when "ContractDefinition"
@@ -217,7 +224,7 @@ module.exports = (root)->
           last = node.scope.list.last()
           t = new ast.Var
           t.name = config.contractStorage
-          if last.constructor.name == 'Ret_multi'
+          if last?.constructor.name == 'Ret_multi'
             last.t_list.push t
           else
             node.scope.list.push last = new ast.Ret_multi

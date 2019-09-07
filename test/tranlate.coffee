@@ -110,6 +110,54 @@ describe 'translate section', ()->
       block {
         skip
       } with (contractStorage);
+    """#"
+    make_test text_i, text_o
+  
+  it 'int ops', ()->
+    text_i = """
+    pragma solidity ^0.5.11;
+
+    contract Forer {
+      uint public value;
+      
+      function forer() public returns (uint yourMom) {
+        uint a = 0;
+        uint b = 0;
+        uint c = 0;
+        c = a + b;
+        c = a - b;
+        c = a * b;
+        c = a / b;
+        c = a % b;
+        c = a & b;
+        c = a | b;
+        c = a ^ b;
+        return c;
+      }
+    }
+    """#"
+    text_o = """
+      type state is record
+        value: int;
+      end;
+      function forer (const contractStorage : state) : (int * state) is
+        block {
+          const a : int = 0;
+          const b : int = 0;
+          const c : int = 0;
+          c := (a + b);
+          c := (a - b);
+          c := (a * b);
+          c := (a / b);
+          c := (a mod b);
+          c := bitwise_and(a, b);
+          c := bitwise_or(a, b);
+          c := bitwise_xor(a, b);
+        } with (c, contractStorage);
+      function main (const dummy_int : int; const contractStorage : state) : (state) is
+        block {
+          skip
+        } with (contractStorage);
     """
     make_test text_i, text_o
   

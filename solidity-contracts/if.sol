@@ -1,9 +1,9 @@
 pragma solidity ^0.5.11;
 
-contract Summator {
+contract Ifer {
   uint public value;
   
-  function sum() public returns (uint yourMom) {
+  function ifer() public returns (uint yourMom) {
     uint x = 5;
     return value + x;
   }

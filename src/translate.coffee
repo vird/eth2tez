@@ -6,9 +6,10 @@ module = @
   ADD : '+'
   # SUB : '-'
   # MUL : '*'
-  ASSIGN : ':='
 
-@bin_op_name_cb_map = {}
+@bin_op_name_cb_map =
+  ASSIGN : (a, b)->
+    "#{a} := #{b}"
 
 class @Gen_context
   fn_hash     : {}

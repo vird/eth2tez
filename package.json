@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "install": "iced -o lib -c src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive --compilers coffee:iced-coffee-script/register --require iced-coffee-coverage/register-istanbul test && istanbul report"
   },
   "bin": {
     "eth2tez": "bin/eth2tez"

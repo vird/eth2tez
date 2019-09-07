@@ -128,7 +128,8 @@ module.exports = (root)->
         ret = new ast.Var_decl
         ret.name = decl.name
         ret.type = new Type decl.typeDescriptions.typeIdentifier
-        ret.assign_value = walk_exec ast_tree.initialValue, ctx
+        if ast_tree.initialValue
+          ret.assign_value = walk_exec ast_tree.initialValue, ctx
         ret
       
       when "Block"
@@ -143,6 +144,30 @@ module.exports = (root)->
         ret.t    = walk_exec ast_tree.trueBody,  ctx
         if ast_tree.falseBody
           ret.f    = walk_exec ast_tree.falseBody, ctx
+        ret
+      
+      when 'WhileStatement'
+        ret = new ast.While
+        ret.cond = walk_exec ast_tree.condition, ctx
+        ret.scope= walk_exec ast_tree.body, ctx
+        ret
+      
+      when 'ForStatement'
+        ret = new ast.Scope
+        ret._phantom = true # HACK
+        if ast_tree.initializationExpression
+          ret.list.push walk_exec ast_tree.initializationExpression, ctx
+        ret.list.push inner = new ast.While
+        inner.cond = walk_exec ast_tree.condition, ctx
+        
+        loc = walk_exec ast_tree.body, ctx
+        if loc.constructor.name == 'Scope'
+          inner.scope = loc
+        else
+          inner.scope.list.push loc
+        
+        # т.к. у нас нет continue, то можно
+        inner.scope.list.push walk_exec ast_tree.loopExpression, ctx
         ret
       
       # ###################################################################################################

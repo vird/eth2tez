@@ -32,7 +32,7 @@ module = @
   ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
   ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
   ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
-  INDEX_ACCESS : (a, b)-> "(#{a})[#{b}]"
+  INDEX_ACCESS : (a, b)-> "#{a}[#{b}]"
 
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"

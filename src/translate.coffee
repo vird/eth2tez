@@ -61,17 +61,35 @@ class @Gen_context
 translate_type = (type)->
   type = type.toString()
   switch type
+    when 't_bool'
+      'bool'
     when 't_uint256'
+      'nat'
+    when 't_int256'
       'int'
+    when 't_address'
+      'address'
+    when 't_string_memory_ptr'
+      'string'
+    when 't_bytes_memory_ptr'
+      'bytes'
     when config.storage
       config.storage
     else
       throw new Error("unknown solidity type '#{type}'")
 
 type2default_value = (type)->
-  switch type
+  switch type.toString()
+    when 't_bool'
+      'false'
     when 't_uint256'
       '0'
+    when 't_int256'
+      '0'
+    when 't_address'
+      '0'
+    when 't_string_memory_ptr'
+      '""'
     else
       throw new Error("unknown solidity type '#{type}'")
     

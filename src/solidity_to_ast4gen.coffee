@@ -128,7 +128,8 @@ module.exports = (root)->
         ret = new ast.Var_decl
         ret.name = decl.name
         ret.type = new Type decl.typeDescriptions.typeIdentifier
-        ret.assign_value = walk_exec ast_tree.initialValue, ctx
+        if ast_tree.initialValue
+          ret.assign_value = walk_exec ast_tree.initialValue, ctx
         ret
       
       when "Block"

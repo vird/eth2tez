@@ -1,2 +1,2 @@
-@storage = 'storage' # type
+@storage = 'state' # type
 @contractStorage = 'contractStorage' # var name

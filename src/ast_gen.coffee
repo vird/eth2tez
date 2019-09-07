@@ -2,7 +2,7 @@
 require 'fy'
 solc = require 'solc'
 
-module.exports = (code)->
+module.exports = (code, opt={})->
   input = {
       language: 'Solidity',
       sources: {
@@ -21,11 +21,12 @@ module.exports = (code)->
       }
   }
   output = JSON.parse(solc.compile(JSON.stringify(input)))
-
+  
   is_ok = true
-  for error in output.errors
+  for error in output.errors or []
     if error.type == 'Warning'
-      p "WARNING", error
+      unless opt.silent
+        p "WARNING", error
       continue
     is_ok = false
     perr error

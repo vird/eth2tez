@@ -12,7 +12,7 @@ describe 'ast_gen section', ()->
         return value + x;
       }
     }
-    """
+    """, silent:true
   
   it 'test contract 1', ()->
     ast_gen """
@@ -26,4 +26,4 @@ describe 'ast_gen section', ()->
         return value + x;
       }
     }
-    """
+    """, silent:true

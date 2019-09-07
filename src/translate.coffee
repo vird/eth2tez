@@ -1,3 +1,4 @@
+config = require './config'
 require 'fy/codegen'
 module = @
 
@@ -9,8 +10,12 @@ module = @
 @bin_op_name_cb_map = {}
 
 class @Gen_context
+  var_hash : {}
   expand_hash : false
-  in_class : false
+  in_fn : false
+  constructor:()->
+    @var_hash = {}
+  
   mk_nest : ()->
     t = new module.Gen_context
     t
@@ -20,6 +25,8 @@ translate_type = (type)->
   switch type
     when 't_uint256'
       'int'
+    when config.storage
+      config.storage
     else
       throw new Error("unknown solidity type '#{type}'")
 
@@ -29,7 +36,10 @@ translate_type = (type)->
     #    expr
     # ###################################################################################################
     when "Var"
-      ast.name
+      if ctx.var_hash[ast.name]
+        ast.name
+      else
+        "{config.contractStorage}.#{ast.name}"
     
     when 'Bin_op'
       _a = gen ast.a, opt, ctx
@@ -52,48 +62,74 @@ translate_type = (type)->
           t += ";"
         jl.push t if t != ''
       
-      ret = jl.pop()
+      ret = jl.pop() or ''
       if 0 != ret.indexOf 'with'
         jl.push ret
         ret = ''
-      """
-      begin
-        #{join_list jl, '  '}
-      end #{ret}
-      """
+      if ctx.in_fn
+        """
+        begin
+          #{join_list jl, '  '}
+        end #{ret}
+        """
+      else
+        join_list jl, ''
     
     when "Var_decl"
-      """
-      const x : int = 5
-      """
+      ctx.var_hash[ast.name] = ast
+      if ast.assign_value
+        val = gen ast.assign_value, opt, ctx
+        """
+        const #{ast.name} : #{translate_type ast.type} = #{val}
+        """
+      else
+        """
+        const #{ast.name} : #{translate_type ast.type}
+        """
     
-    when "Ret"
-      ret = gen ast.t, opt, ctx
+    when "Const"
+      ast.val
+    
+    when "Ret_multi"
+      jl = []
+      for v in ast.t_list
+        jl.push gen v, opt, ctx
       """
-      with (#{ret})
+      with (#{jl.join '; '})
       """
     
     when "Class_decl"
-      # Õ¿ —¿ÃŒÃ ƒ≈À≈  À¿——Œ¬ ” Õ¿— ¡€“‹ Õ≈ ƒŒÀ∆ÕŒ
-      gen ast.scope, opt, ctx
+      jl = []
+      for v in ast.scope.list
+        switch v.constructor.name
+          when 'Var_decl'
+            jl.push "#{v.name}: #{translate_type v.type};"
+          else
+            throw new Error("unimplemented v.constructor.name=#{v.constructor.name}")
+      """
+      type #{ast.name} is record
+        #{join_list jl, '  '}
+      end
+      """
     
-    when "Fn_decl"
+    when "Fn_decl_multiret"
+      ctx = ctx.mk_nest()
+      ctx.in_fn = true
       arg_jl = []
       for v,idx in ast.arg_name_list
-        type = translate_type ast.type.nest_list[idx+1]
-        arg_jl.push "const #{v} : #{type};"
+        type = translate_type ast.type_i.nest_list[idx]
+        arg_jl.push "const #{v} : #{type}"
       
-      ret_type = translate_type ast.type.nest_list[0]
+      ret_jl = []
+      for v in ast.type_o.nest_list
+        type = translate_type v
+        ret_jl.push "#{type}"
+      
       body = gen ast.scope, opt, ctx
       """
-      function #{ast.name} (#{arg_jl.join ''} const contractStorage : int) : (#{ret_type}) is
+      function #{ast.name} (#{arg_jl.join '; '}) : (#{ret_jl.join '; '}) is
         #{make_tab body, '  '}
       """
-      ###
-      begin
-          const x : int = 5;
-        end with (x + 2)
-      ###
     
     
     else

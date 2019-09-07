@@ -5,6 +5,9 @@ contract Ifer {
   
   function ifer() public returns (uint yourMom) {
     uint x = 5;
-    return value + x;
+    if (x == 5) {
+        return value + x;
+    }
+    else return 0;
   }
 }

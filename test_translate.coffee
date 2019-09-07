@@ -1,7 +1,7 @@
 #!/usr/bin/env iced
 require 'fy'
 ast_gen = require('./src/ast_gen')
-translate = require('./src/translate')
+translate = require('./src/solidity_to_ast4gen')
 res = ast_gen """
   pragma solidity ^0.5.11;
   

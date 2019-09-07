@@ -27,6 +27,11 @@ module = @
   BIT_AND : (a, b)-> "bitwise_and(#{a}, #{b})"
   BIT_OR  : (a, b)-> "bitwise_or(#{a}, #{b})"
   BIT_XOR : (a, b)-> "bitwise_xor(#{a}, #{b})"
+  
+  ASS_ADD : (a, b)-> "#{a} := #{a} + #{b}"
+  ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
+  ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
+  ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
 
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"

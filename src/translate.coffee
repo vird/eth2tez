@@ -111,7 +111,7 @@ reserved_hash =
 
 var_name_trans = (name)->
   if reserved_hash[name]
-    "__#{name}"
+    "reserved__#{name}"
   else
     name
 

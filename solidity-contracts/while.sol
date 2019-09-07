@@ -1,6 +1,6 @@
 pragma solidity ^0.5.11;
 
-contract Summator {
+contract Whiler {
   uint public value;
   
   function whiler() public returns (uint yourMom) {

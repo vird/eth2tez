@@ -1,20 +1,14 @@
 Type = require 'type'
 ast = require 'ast4gen'
 
+bin_op_map =
+  '+' : 'ADD'
+
 class Context
   current_contract  : null
   contract_list     : []
   constructor:()->
     @contract_list = []
-
-class SContract
-  name              : ''
-  var_list          : []
-  function_list     : []
-  current_function  : null
-  constructor:()->
-    @var_list = []
-    @function_list = []
 
 module.exports = (root)->
   
@@ -58,7 +52,9 @@ module.exports = (root)->
       
       when 'BinaryOperation'
         ret = new ast.Bin_op
-        ret.op = ast_tree.operator
+        ret.op = bin_op_map[ast_tree.operator]
+        if !ret.op
+          throw new Error("unknown bin_op #{ast_tree.operator}")
         ret.a = walk_exec ast_tree.leftExpression, ctx
         ret.b = walk_exec ast_tree.rightExpression, ctx
         ret
@@ -134,7 +130,7 @@ module.exports = (root)->
         fn.type.nest_list.push ret_list[0]
         fn.type.nest_list.append arg_list
         for v in arg_list
-          fn.type.arg_name_list.push v._name
+          fn.arg_name_list.push v._name
         # ctx.stateMutability
         if ast_tree.modifiers.length
           throw new "ast_tree.modifiers not implemented"
@@ -158,6 +154,8 @@ module.exports = (root)->
   for node in root.nodes
     walk node, ctx  
   
-  pp ctx.current_contract
+  ret = new ast.Scope
+  for v in ctx.contract_list
+    ret.list.push v
   
-  return
+  ret

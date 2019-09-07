@@ -193,8 +193,8 @@ module.exports = (root)->
     switch ast_tree.nodeType
       when "PragmaDirective"
         name = ast_tree.literals[0]
-        if name == 'solidity'
-          return
+        return if name == 'solidity'
+        return if name == 'experimental'
         throw new Error("unknown pragma '#{name}'")
       when "VariableDeclaration"
         if ast_tree.value

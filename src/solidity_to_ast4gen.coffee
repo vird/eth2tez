@@ -146,6 +146,12 @@ module.exports = (root)->
           ret.f    = walk_exec ast_tree.falseBody, ctx
         ret
       
+      when 'WhileStatement'
+        ret = new ast.While
+        ret.cond = walk_exec ast_tree.condition, ctx
+        ret.scope= walk_exec ast_tree.body, ctx
+        ret
+      
       # ###################################################################################################
       #    control flow
       # ###################################################################################################

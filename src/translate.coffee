@@ -231,7 +231,14 @@ type2default_value = (type)->
       t    = gen ast.t, opt, ctx
       f    = gen ast.f, opt, ctx
       """
-      if (#{cond}) then #{t} else #{f};
+      if #{smart_bracket cond} then #{t} else #{f};
+      """
+    
+    when "While"
+      cond = gen ast.cond, opt, ctx
+      scope= gen ast.scope, opt, ctx
+      """
+      while #{smart_bracket cond} #{scope};
       """
     
     when "Class_decl"

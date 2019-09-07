@@ -4,6 +4,8 @@ ast = require './ast'
 
 bin_op_map =
   '+'   : 'ADD'
+  '-'   : 'SUB'
+  '*'   : 'MUL'
   
   '==' : 'EQ'
   '!=' : 'NE'

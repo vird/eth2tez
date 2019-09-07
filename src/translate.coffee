@@ -4,8 +4,8 @@ module = @
 
 @bin_op_name_map =
   ADD : '+'
-  # SUB : '-'
-  # MUL : '*'
+  SUB : '-'
+  MUL : '*'
   
   
   EQ : '='

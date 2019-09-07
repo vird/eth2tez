@@ -121,7 +121,8 @@ module.exports = (root)->
         ret = new ast.If
         ret.cond = walk_exec ast_tree.condition, ctx
         ret.t    = walk_exec ast_tree.trueBody,  ctx
-        ret.f    = walk_exec ast_tree.falseBody, ctx
+        if ast_tree.falseBody
+          ret.f    = walk_exec ast_tree.falseBody, ctx
         ret
       
       # ###################################################################################################

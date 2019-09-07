@@ -153,6 +153,7 @@ type2default_value = (type)->
       if 0 != ret.indexOf 'with'
         jl.push ret
         ret = ''
+      jl = jl.filter (t)-> t != ''
       if ctx.in_fn
         body = ""
         if jl.length

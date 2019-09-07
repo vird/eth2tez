@@ -219,7 +219,7 @@ type2default_value = (type)->
         if type == 'nat'
           val = "nat(#{val})"
         """
-        const #{ast.name} : #{} = #{val}
+        const #{ast.name} : #{type} = #{val}
         """
       else
         """

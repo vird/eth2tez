@@ -1,6 +1,8 @@
 
+require 'fy'
+solc = require 'solc'
+
 module.exports = (code)->
-  solc = require('solc')
   input = {
       language: 'Solidity',
       sources: {
@@ -19,6 +21,10 @@ module.exports = (code)->
       }
   }
   output = JSON.parse(solc.compile(JSON.stringify(input)))
+
+  if output.errors.length
+    perr output.errors
+    throw Error "solc compiler error"
 
   res = output.sources['test.sol'].ast
   if !res

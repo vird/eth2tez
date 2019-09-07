@@ -102,7 +102,18 @@ type2default_value = (type)->
       '""'
     else
       throw new Error("unknown solidity type '#{type}'")
-    
+
+reserved_hash =
+  sender : true
+  source : true
+  amount : true
+  now    : true
+
+var_name_trans = (name)->
+  if reserved_hash[name]
+    "__#{name}"
+  else
+    name
 
 @gen = (ast, opt = {})->
   ctx = new module.Gen_context
@@ -117,10 +128,11 @@ type2default_value = (type)->
     #    expr
     # ###################################################################################################
     when "Var"
-      if ctx.var_hash[ast.name] or ast.name == config.contractStorage
-        ast.name
+      name = var_name_trans ast.name
+      if ctx.var_hash[name] or name == config.contractStorage
+        name
       else
-        "#{config.contractStorage}.#{ast.name}"
+        "#{config.contractStorage}.#{name}"
     
     when 'Bin_op'
       _a = gen ast.a, opt, ctx
@@ -225,16 +237,18 @@ type2default_value = (type)->
         join_list jl, ''
     
     when "Var_decl"
-      ctx.var_hash[ast.name] = true
+      name = var_name_trans ast.name
+      
+      ctx.var_hash[name] = true
       type = translate_type ast.type
       if ast.assign_value
         val = gen ast.assign_value, opt, ctx
         """
-        const #{ast.name} : #{type} = #{val}
+        const #{name} : #{type} = #{val}
         """
       else
         """
-        const #{ast.name} : #{type} = #{type2default_value ast.type}
+        const #{name} : #{type} = #{type2default_value ast.type}
         """
     
     when "Ret_multi"
@@ -280,6 +294,7 @@ type2default_value = (type)->
       ctx.in_fn = true
       arg_jl = []
       for v,idx in ast.arg_name_list
+        v = var_name_trans v
         ctx.var_hash[v] = true
         type = translate_type ast.type_i.nest_list[idx]
         arg_jl.push "const #{v} : #{type}"

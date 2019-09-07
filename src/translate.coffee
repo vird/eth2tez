@@ -6,6 +6,8 @@ module = @
   ADD : '+'
   SUB : '-'
   MUL : '*'
+  DIV : '/'
+  MOD : 'mod'
   
   
   EQ : '='

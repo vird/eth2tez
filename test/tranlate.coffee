@@ -26,14 +26,87 @@ describe 'translate section', ()->
     }
     """
     text_o = """
-    type store is record
+    type state is record
       value: int;
     end;
-    function test (const contractStorage : storage) : (storage) is
+    function test (const contractStorage : state) : (state) is
       block {
-        (contractStorage.value := 1);
+        contractStorage.value := 1;
       } with (contractStorage);
-    function main (const contractStorage : storage) : (storage) is
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
+      block {
+        skip
+      } with (contractStorage);
+    """
+    make_test text_i, text_o
+  
+  it 'if', ()->
+    text_i = """
+    pragma solidity ^0.5.11;
+    
+    contract Ifer {
+      uint public value;
+      
+      function ifer() public returns (uint yourMom) {
+        uint x = 5;
+        uint ret = 0;
+        if (x == 5) {
+          ret = value + x;
+        }
+        else  {
+          ret = 0;
+        }
+        return ret;
+      }
+    }
+    """
+    text_o = """
+    type state is record
+      value: int;
+    end;
+    function ifer (const contractStorage : state) : (int * state) is
+      block {
+        const x : int = 5;
+        const ret : int = 0;
+        if ((x = 5)) then block {
+          ret := (contractStorage.value + x);
+        } else block {
+          ret := 0;
+        };
+      } with (ret, contractStorage);
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
+      block {
+        skip
+      } with (contractStorage);
+    """
+    make_test text_i, text_o
+  
+  it 'require', ()->
+    text_i = """
+    pragma solidity ^0.5.11;
+
+    contract Forer {
+      uint public value;
+      
+      function forer() public returns (uint yourMom) {
+        uint y = 0;
+        require(y == 0, "wtf");
+        return y;
+      }
+    }
+    """#"
+    text_o = """
+    type state is record
+      value: int;
+    end;
+    function forer (const contractStorage : state) : (int * state) is
+      block {
+        const y : int = 0;
+        if (!(y = 0)) begin
+          fail("wtf");
+        end;
+      } with (y, contractStorage);
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
       block {
         skip
       } with (contractStorage);

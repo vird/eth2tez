@@ -5,7 +5,7 @@ contract Forer {
   
   function forer() public returns (uint yourMom) {
     uint y = 0;
-    for (uint i=0; i<5; i++) {
+    for (uint i=0; i<5; i+=1) {
         y += 1;
     }
     return y;

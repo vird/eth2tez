@@ -146,7 +146,7 @@ type2default_value = (type)->
     
     when "Field_access"
       t = gen ast.t, opt, ctx
-      "(#{t}).#{ast.name}"
+      "#{t}.#{ast.name}"
     
     when "Fn_call"
       fn = gen ast.fn, opt, ctx

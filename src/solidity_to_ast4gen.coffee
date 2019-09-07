@@ -220,7 +220,6 @@ module.exports = (root)->
         return if name == 'experimental'
         throw new Error("unknown pragma '#{name}'")
       when "VariableDeclaration"
-        pp ast_tree.typeName
         ret = new ast.Var_decl
         ret._const = ast_tree.constant
         ret.name = ast_tree.name

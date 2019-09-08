@@ -318,6 +318,7 @@ var_name_trans = (name)->
       
       body = gen ast.scope, opt, ctx
       """
+      
       function #{ast.name} (#{arg_jl.join '; '}) : (#{ret_jl.join ' * '}) is
         #{make_tab body, '  '}
       """

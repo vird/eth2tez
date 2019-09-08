@@ -31,10 +31,12 @@ describe 'translate section', ()->
     type state is record
       value: nat;
     end;
+    
     function test (const contractStorage : state) : (state) is
       block {
         contractStorage.value := 1;
       } with (contractStorage);
+    
     function main (const dummy_int : nat; const contractStorage : state) : (state) is
       block {
         skip
@@ -66,6 +68,7 @@ describe 'translate section', ()->
     type state is record
       value: nat;
     end;
+    
     function ifer (const contractStorage : state) : (nat * state) is
       block {
         const x : nat = 5;
@@ -76,6 +79,7 @@ describe 'translate section', ()->
           ret := 0;
         };
       } with (ret, contractStorage);
+    
     function main (const dummy_int : nat; const contractStorage : state) : (state) is
       block {
         skip
@@ -101,6 +105,7 @@ describe 'translate section', ()->
     type state is record
       value: nat;
     end;
+    
     function forer (const contractStorage : state) : (nat * state) is
       block {
         const y : nat = 0;
@@ -108,6 +113,7 @@ describe 'translate section', ()->
           fail("wtf");
         end;
       } with (y, contractStorage);
+    
     function main (const dummy_int : nat; const contractStorage : state) : (state) is
       block {
         skip
@@ -142,6 +148,7 @@ describe 'translate section', ()->
       type state is record
         value: nat;
       end;
+      
       function forer (const contractStorage : state) : (nat * state) is
         block {
           const a : nat = 0;
@@ -156,6 +163,7 @@ describe 'translate section', ()->
           c := bitwise_or(a, b);
           c := bitwise_xor(a, b);
         } with (c, contractStorage);
+      
       function main (const dummy_int : nat; const contractStorage : state) : (state) is
         block {
           skip

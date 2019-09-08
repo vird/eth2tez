@@ -2,74 +2,6 @@ config = require './config'
 require 'fy/codegen'
 module = @
 
-
-@bin_op_name_map =
-  ADD : '+'
-  SUB : '-'
-  MUL : '*'
-  DIV : '/'
-  MOD : 'mod'
-  
-  
-  EQ : '='
-  NE : '=/='
-  GT : '>'
-  LT : '<'
-  GTE: '>='
-  LTE: '<='
-  
-  
-  BOOL_AND: 'and'
-  BOOL_OR : 'or'
-
-@bin_op_name_cb_map =
-  ASSIGN  : (a, b)-> "#{a} := #{b}"
-  BIT_AND : (a, b)-> "bitwise_and(#{a}, #{b})"
-  BIT_OR  : (a, b)-> "bitwise_or(#{a}, #{b})"
-  BIT_XOR : (a, b)-> "bitwise_xor(#{a}, #{b})"
-  
-  ASS_ADD : (a, b)-> "#{a} := #{a} + #{b}"
-  ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
-  ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
-  ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
-  INDEX_ACCESS : (a, b, ctx)->
-    ret = if ctx.lvalue
-      "#{a}[#{b}]"
-    else
-      "get_force(#{b}, #{a})"
-
-@un_op_name_cb_map =
-  MINUS   : (a)->"-(#{a})"
-  PLUS    : (a)->"+(#{a})"
-  BIT_NOT : (a)->"not (#{a})"
-
-smart_bracket = (t)->
-  if t[0] == '(' and t[t.length-1] == ')'
-    t
-  else
-    "(#{t})"
-
-
-class @Gen_context
-  fn_hash     : {}
-  var_hash    : {}
-  expand_hash : false
-  in_fn       : false
-  tmp_idx     : 0
-  sink_list   : []
-  lvalue      : false
-  
-  constructor:()->
-    @fn_hash    = {}
-    @var_hash   = {}
-    @sink_list  = []
-  
-  mk_nest : ()->
-    t = new module.Gen_context
-    t.var_hash = clone @var_hash
-    t.fn_hash  = @fn_hash
-    t
-
 translate_type = (type)->
   switch type.main
     when 't_bool'
@@ -107,6 +39,75 @@ type2default_value = (type)->
       '""'
     else
       throw new Error("unknown solidity type '#{type}'")
+
+@bin_op_name_map =
+  ADD : '+'
+  SUB : '-'
+  MUL : '*'
+  DIV : '/'
+  MOD : 'mod'
+  
+  
+  EQ : '='
+  NE : '=/='
+  GT : '>'
+  LT : '<'
+  GTE: '>='
+  LTE: '<='
+  
+  
+  BOOL_AND: 'and'
+  BOOL_OR : 'or'
+
+@bin_op_name_cb_map =
+  ASSIGN  : (a, b)-> "#{a} := #{b}"
+  BIT_AND : (a, b)-> "bitwise_and(#{a}, #{b})"
+  BIT_OR  : (a, b)-> "bitwise_or(#{a}, #{b})"
+  BIT_XOR : (a, b)-> "bitwise_xor(#{a}, #{b})"
+  
+  ASS_ADD : (a, b)-> "#{a} := #{a} + #{b}"
+  ASS_SUB : (a, b)-> "#{a} := #{a} - #{b}"
+  ASS_MUL : (a, b)-> "#{a} := #{a} * #{b}"
+  ASS_DIV : (a, b)-> "#{a} := #{a} / #{b}"
+  INDEX_ACCESS : (a, b, ctx, ast)->
+    ret = if ctx.lvalue
+      "#{a}[#{b}]"
+    else
+      val = type2default_value ast.type
+      "(case #{a}[#{b}] of | None -> #{val} | Some(x) -> x end)"
+      # "get_force(#{b}, #{a})"
+
+@un_op_name_cb_map =
+  MINUS   : (a)->"-(#{a})"
+  PLUS    : (a)->"+(#{a})"
+  BIT_NOT : (a)->"not (#{a})"
+
+smart_bracket = (t)->
+  if t[0] == '(' and t[t.length-1] == ')'
+    t
+  else
+    "(#{t})"
+
+
+class @Gen_context
+  fn_hash     : {}
+  var_hash    : {}
+  expand_hash : false
+  in_fn       : false
+  tmp_idx     : 0
+  sink_list   : []
+  lvalue      : false
+  
+  constructor:()->
+    @fn_hash    = {}
+    @var_hash   = {}
+    @sink_list  = []
+  
+  mk_nest : ()->
+    t = new module.Gen_context
+    t.var_hash = clone @var_hash
+    t.fn_hash  = @fn_hash
+    t
 
 reserved_hash =
   sender : true
@@ -148,7 +149,7 @@ var_name_trans = (name)->
       if op = module.bin_op_name_map[ast.op]
         "(#{_a} #{op} #{_b})"
       else if cb = module.bin_op_name_cb_map[ast.op]
-        cb(_a, _b, ctx)
+        cb(_a, _b, ctx, ast)
       else
         throw new Error "Unknown/unimplemented bin_op #{ast.op}"
     

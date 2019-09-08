@@ -222,6 +222,7 @@ describe 'translate section', ()->
         } with (contractStorage);
     """
     make_test text_i, text_o
+  
   it 'a[b]', ()->
     text_i = """
     pragma solidity ^0.5.11;
@@ -250,6 +251,7 @@ describe 'translate section', ()->
       } with (contractStorage);
     """
     make_test text_i, text_o
+  
   it 'maps', ()->
     text_i = """
     pragma solidity ^0.5.11;
@@ -281,6 +283,7 @@ describe 'translate section', ()->
         } with (contractStorage);
     """
     make_test text_i, text_o
+  
   it 'while', ()->
     text_i = """
     pragma solidity ^0.5.11;
@@ -316,6 +319,7 @@ describe 'translate section', ()->
       } with (contractStorage);
     """
     make_test text_i, text_o
+  
   it 'for', ()->
     text_i = """
     pragma solidity ^0.5.11;
@@ -346,6 +350,41 @@ describe 'translate section', ()->
           i := (i + 10);
         };
       } with (i, contractStorage);
+    
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
+      block {
+        skip
+      } with (contractStorage);
+    """
+    make_test text_i, text_o
+  
+  it 'fn call', ()->
+    text_i = """
+    pragma solidity ^0.5.11;
+
+    contract Forer {
+      function call_me(int a) public returns (int yourMom) {
+        return a;
+      }
+      function forer(int a) public returns (int yourMom) {
+        return call_me(a);
+      }
+    }
+    """#"
+    text_o = """
+    type state is record
+      
+    end;
+    
+    function call_me (const a : int; const contractStorage : state) : (int * state) is
+      block {
+        skip
+      } with (a, contractStorage);
+    
+    function forer (const a : int; const contractStorage : state) : (int * state) is
+      block {
+        const tmp_0 : (int * state) = call_me(a, contractStorage);
+      } with (tmp_0, contractStorage);
     
     function main (const dummy_int : int; const contractStorage : state) : (state) is
       block {

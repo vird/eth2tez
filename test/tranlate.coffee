@@ -1,11 +1,13 @@
 assert = require 'assert'
 ast_gen             = require('../src/ast_gen')
 solidity_to_ast4gen = require('../src/solidity_to_ast4gen')
+type_inference      = require('../src/type_inference')
 translate           = require('../src/translate')
 
 make_test = (text_i, text_o_expected)->
   solidity_ast = ast_gen text_i, silent:true
   ast = solidity_to_ast4gen solidity_ast
+  ast = type_inference.gen ast
   text_o_real = translate.gen ast
   text_o_expected = text_o_expected.trim()
   text_o_real     = text_o_real.trim()

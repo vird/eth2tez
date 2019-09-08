@@ -295,6 +295,7 @@ class_prepare = (ctx, t)->
             change_count++
             t.assign_value.type = t.type
           walk t.assign_value, ctx
+        ctx.var_hash[t.name] = t.type
         null
       
       when "Scope"

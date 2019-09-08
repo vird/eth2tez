@@ -11,6 +11,13 @@ module = @
       ret.field_hash['sender'] = new Type "t_address"
       ret
     )()
+    require : (()->
+      ret = new Type "function2"
+      ret.nest_list.push type_i = new Type "function"
+      ret.nest_list.push type_o = new Type "function"
+      type_i.nest_list.push "bool"
+      ret
+    )()
   }
 
 @default_type_hash_gen = ()->
@@ -150,7 +157,12 @@ class_prepare = (ctx, t)->
         # field_type = ast.type_actualize field_type, t.t.type
         t.type = field_type
         t.type
-
+      
+      when "Fn_call"
+        root_type = walk t.fn, ctx
+        for arg in t.arg_list
+          walk arg, ctx
+        t.type = root_type.nest_list[0].nest_list[0]
       
       # ###################################################################################################
       #    stmt
@@ -286,6 +298,12 @@ class_prepare = (ctx, t)->
         t.type = field_type
         t.type
       
+      when "Fn_call"
+        root_type = walk t.fn, ctx
+        for arg in t.arg_list
+          walk arg, ctx
+        t.type = root_type.nest_list[0].nest_list[0]
+      
       # ###################################################################################################
       #    stmt
       # ###################################################################################################
@@ -351,7 +369,7 @@ class_prepare = (ctx, t)->
   
   for i in [0 ... 100] # prevent infinite
     walk ast_tree, new Ti_context
-    p "phase 2 ti change_count=#{change_count}" # DEBUG
+    # p "phase 2 ti change_count=#{change_count}" # DEBUG
     break if change_count == 0
     change_count = 0
   

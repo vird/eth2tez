@@ -81,6 +81,8 @@ class_prepare = (ctx, t)->
         t._prepared_field2type[v.name] = v.type
   return
 
+is_not_a_type = (type)->
+  !type or type.main == 'number'
 
 @gen = (ast_tree, opt)->
   # phase 1 bottom-to-top walk + type reference
@@ -246,8 +248,8 @@ class_prepare = (ctx, t)->
       when "Bin_op"
         list = module.bin_op_ret_type_hash_list[t.op]
         can_bruteforce = t.type?        
-        can_bruteforce and= bruteforce_a = (!t.a.type or t.a.type.main == 'number')
-        can_bruteforce and= bruteforce_b = (!t.b.type or t.b.type.main == 'number')
+        can_bruteforce and= bruteforce_a = is_not_a_type t.a.type
+        can_bruteforce and= bruteforce_b = is_not_a_type t.b.type
         
         if can_bruteforce
           a_type_list = if bruteforce_a then [] else [t.a.type.toString()]
@@ -309,7 +311,7 @@ class_prepare = (ctx, t)->
       # ###################################################################################################
       when "Var_decl"
         if t.assign_value
-          if !t.assign_value.type
+          if is_not_a_type t.assign_value.type
             change_count++
             t.assign_value.type = t.type
           walk t.assign_value, ctx

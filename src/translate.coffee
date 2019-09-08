@@ -153,7 +153,7 @@ var_name_trans = (name)->
         # HACK for maps
         if ast.a.constructor.name == 'Bin_op' and ast.a.op == 'INDEX_ACCESS'
           if ast.a.a.type.main == 'map'
-            tmp_var = "_tmp#{ctx.tmp_idx++}"
+            tmp_var = "tmp_#{ctx.tmp_idx++}"
             ctx_lvalue.var_hash[tmp_var] = true
             tmp_type = translate_type ast.a.a.type
             _proxy_a = gen ast.a.a, opt, ctx_lvalue
@@ -235,7 +235,7 @@ var_name_trans = (name)->
           type_jl.push translate_type v
         
         arg_list.push config.contractStorage
-        tmp_var = "_tmp#{ctx.tmp_idx++}"
+        tmp_var = "tmp_#{ctx.tmp_idx++}"
         ctx.sink_list.push "const #{tmp_var} : (#{type_jl.join ' * '}) = #{fn}(#{arg_list.join ', '})"
         tmp_var
       

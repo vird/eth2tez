@@ -2,7 +2,7 @@
 
 #USAGE: compile-ligo.sh <filename> 
 
-ligo dry-run $1 --syntax pascaligo main "Constructor((\"tz1gSkRdKZiEyDXWArRSBLjpUaFr5ReLMy1w\": address))" "record
+ligo dry-run $1 --syntax pascaligo main 0 "record
     minter = (\"tz1gSkRdKZiEyDXWArRSBLjpUaFr5ReLMy1w\": address);
     balances = ((map end) : map(address, nat)) end
 "

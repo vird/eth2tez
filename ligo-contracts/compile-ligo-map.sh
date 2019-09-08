@@ -2,12 +2,9 @@
 
 #USAGE: compile-ligo.sh <filename> 
 
-ligo dry-run $1 --syntax pascaligo main 0 "map
-1n -> record
-        value = 50;
-    end;
-    2n -> record
-        value = 133;
-    end;
-end
+ligo dry-run $1 --syntax pascaligo main "Constructor((\"tz1gSkRdKZiEyDXWArRSBLjpUaFr5ReLMy1w\": address))" "record
+    minter = (\"tz1gSkRdKZiEyDXWArRSBLjpUaFr5ReLMy1w\": address);
+    balances = ((map end) : map(address, nat)) end
 "
+
+# (\"tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx\" : address) -> 1n;

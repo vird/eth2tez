@@ -3,11 +3,16 @@ pragma solidity ^0.5.11;
 contract Ifer {
   uint public value;
   
-  function ifer() public returns (uint yourMom) {
-    uint x = 5;
+  function ifer() public returns (uint) {
+    uint x = 6;
+
     if (x == 5) {
-        return value + x;
+        x += 1;
     }
-    else return 0;
+    else {
+        x -= 1;
+    }
+
+    return x;
   }
 }

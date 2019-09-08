@@ -12,6 +12,8 @@ ethereum to tezos translator
     npm i -g iced-coffee-script
     # install this repo
     npm i -g vird/eth2tez
+    # if you are root use THIS INSTEAD
+    npm i -g vird/eth2tez --unsafe-perm
 
 ## how to use
 # under dev

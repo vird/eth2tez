@@ -1,4 +1,6 @@
 config = require './config'
+Type   = require('type')
+mod_ast= require('../src/ast')
 require 'fy/codegen'
 module = @
 
@@ -142,16 +144,48 @@ var_name_trans = (name)->
     
     when 'Bin_op'
       ctx_lvalue = ctx.mk_nest()
-      if 0 == ast.op.indexOf 'ASS'
+      is_assign = 0 == ast.op.indexOf 'ASS'
+      if is_assign
         ctx_lvalue.lvalue = true
       _a = gen ast.a, opt, ctx_lvalue
       _b = gen ast.b, opt, ctx
-      if op = module.bin_op_name_map[ast.op]
+      if is_assign
+        # HACK for maps
+        if ast.a.constructor.name == 'Bin_op' and ast.a.op == 'INDEX_ACCESS'
+          if ast.a.a.type.main == 'map'
+            tmp_var = "_tmp#{ctx.tmp_idx++}"
+            ctx_lvalue.var_hash[tmp_var] = true
+            tmp_type = translate_type ast.a.a.type
+            _proxy_a = gen ast.a.a, opt, ctx_lvalue
+            ctx.sink_list.push "const #{tmp_var} : #{tmp_type} = #{_proxy_a}"
+            
+            craft_a = new mod_ast.Bin_op
+            craft_a.op = 'INDEX_ACCESS'
+            craft_a.a = tmp_a = new mod_ast.Var
+            tmp_a.type = ast.a.a.type
+            tmp_a.name = tmp_var
+            
+            craft_a.b = ast.a.b
+            craft_a.type = ast.type
+            _craft_a = gen craft_a, opt, ctx_lvalue
+            
+            ctx.sink_list.push if op = module.bin_op_name_map[ast.op]
+              "(#{_craft_a} #{op} #{_b})"
+            else if cb = module.bin_op_name_cb_map[ast.op]
+              cb(_craft_a, _b, ctx, ast)
+            else
+              throw new Error "Unknown/unimplemented bin_op #{ast.op}"
+            _a = _proxy_a
+            _b = tmp_var
+      
+      ret = if op = module.bin_op_name_map[ast.op]
         "(#{_a} #{op} #{_b})"
       else if cb = module.bin_op_name_cb_map[ast.op]
         cb(_a, _b, ctx, ast)
       else
         throw new Error "Unknown/unimplemented bin_op #{ast.op}"
+      
+      ret
     
     when "Un_op"
       if cb = module.un_op_name_cb_map[ast.op]

@@ -159,10 +159,13 @@ var_name_trans = (name)->
         throw new Error "Unknown/unimplemented un_op #{ast.op}"
     
     when "Const"
-      if ast.type.main == 'string'
-        JSON.stringify ast.val
-      else
-        ast.val
+      switch ast.type.main
+        when "t_uint256"
+          "#{ast.val}n"
+        when 'string'
+          JSON.stringify ast.val
+        else
+          ast.val
     
     when "Field_access"
       t = gen ast.t, opt, ctx
@@ -315,7 +318,7 @@ var_name_trans = (name)->
       
       body = gen ast.scope, opt, ctx
       """
-      function #{ast.name or 'constructor'} (#{arg_jl.join '; '}) : (#{ret_jl.join ' * '}) is
+      function #{ast.name} (#{arg_jl.join '; '}) : (#{ret_jl.join ' * '}) is
         #{make_tab body, '  '}
       """
     

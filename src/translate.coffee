@@ -184,9 +184,10 @@ var_name_trans = (name)->
       # HACK  
       if fn == "#{config.contractStorage}.require"
         arg_list[0]
+        failtext = arg_list[1] or ""
         return """
           if (!#{smart_bracket arg_list[0]}) begin
-            fail(#{arg_list[1]});
+            fail(#{failtext});
           end
           """
       

@@ -255,7 +255,7 @@ module.exports = (root)->
         fn = ctx.current_function = new ast.Fn_decl_multiret
         # ctx.current_contract.function_list.push ctx.current_function
         # ctx.current_contract.scope.list.push ctx.current_function
-        fn.name = ast_tree.name
+        fn.name = ast_tree.name or 'constructor'
         
         fn.type_i =  new Type 'function'
         fn.type_o =  new Type 'function'

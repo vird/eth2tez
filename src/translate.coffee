@@ -221,7 +221,7 @@ var_name_trans = (name)->
         arg_list[0]
         failtext = arg_list[1] or ""
         return """
-          if (not #{smart_bracket arg_list[0]}) then
+          if (not #{smart_bracket arg_list[0]}) then begin
             fail(#{failtext});
           end
           """

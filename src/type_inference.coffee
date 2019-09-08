@@ -246,10 +246,24 @@ is_not_a_type = (type)->
         t.type
       
       when "Bin_op"
+        bruteforce_a = is_not_a_type t.a.type
+        bruteforce_b = is_not_a_type t.b.type
+          
         list = module.bin_op_ret_type_hash_list[t.op]
-        can_bruteforce = t.type?        
-        can_bruteforce and= bruteforce_a = is_not_a_type t.a.type
-        can_bruteforce and= bruteforce_b = is_not_a_type t.b.type
+        can_bruteforce = t.type?
+        can_bruteforce and= bruteforce_a or bruteforce_b
+        can_bruteforce and= list?
+        
+        if t.op == 'ASSIGN'
+          if bruteforce_a and !bruteforce_b
+            change_count++
+            t.a.type = t.b.type
+          else if !bruteforce_a and bruteforce_b
+            change_count++
+            t.b.type = t.a.type
+        else
+          if !list?
+            perr "can't type inference bin_op=  '#{t.op}'"
         
         if can_bruteforce
           a_type_list = if bruteforce_a then [] else [t.a.type.toString()]
@@ -302,8 +316,12 @@ is_not_a_type = (type)->
       
       when "Fn_call"
         root_type = walk t.fn, ctx
-        for arg in t.arg_list
+        for arg,i in t.arg_list
           walk arg, ctx
+          expected_type = t.fn.type.nest_list[0].nest_list[i]
+          if is_not_a_type arg.type
+            change_count++
+            arg.type = expected_type
         t.type = root_type.nest_list[0].nest_list[0]
       
       # ###################################################################################################

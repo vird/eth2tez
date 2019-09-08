@@ -34,7 +34,7 @@ describe 'translate section', ()->
     
     function test (const contractStorage : state) : (state) is
       block {
-        contractStorage.value := 1;
+        contractStorage.value := 1n;
       } with (contractStorage);
     
     function main (const dummy_int : nat; const contractStorage : state) : (state) is
@@ -73,10 +73,10 @@ describe 'translate section', ()->
       block {
         const x : nat = 5n;
         const ret : nat = 0n;
-        if (x = 5) then block {
+        if (x = 5n) then block {
           ret := (contractStorage.value + x);
         } else block {
-          ret := 0;
+          ret := 0n;
         };
       } with (ret, contractStorage);
     
@@ -109,7 +109,7 @@ describe 'translate section', ()->
     function forer (const contractStorage : state) : (nat * state) is
       block {
         const y : nat = 0n;
-        if (not (y = 0n)) begin
+        if (not (y = 0n)) then begin
           fail("wtf");
         end;
       } with (y, contractStorage);

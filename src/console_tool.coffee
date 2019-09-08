@@ -1,4 +1,5 @@
 #!/usr/bin/env iced
+### !pragma coverage-skip-block ###
 require 'fy'
 argv = require('minimist') process.argv.slice(2)
 

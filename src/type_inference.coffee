@@ -25,8 +25,11 @@ module = @
     
   }
 
-@bin_op_ret_type_hash_list = {
-  
+@bin_op_ret_type_hash_list = {}
+@un_op_ret_type_hash_list = {
+  MINUS : [
+    ['t_int256', 't_int256']
+  ]
 }
 # ###################################################################################################
 #    type table
@@ -141,6 +144,19 @@ is_not_a_type = (type)->
                 # found = true
         # if !found
           # throw new Error "unknown bin_op=#{t.op} a=#{a} b=#{b}"
+        t.type
+      
+      when "Un_op"
+        list = module.un_op_ret_type_hash_list[t.op]
+        a = walk(t.a, ctx).toString()
+        found = false
+        if list
+          for tuple in list
+            continue if tuple[0] != a
+            found = true
+            t.type = new Type tuple[1]
+        if !found
+          throw new Error "unknown un_op=#{t.op} a=#{a}"
         t.type
       
       when "Field_access"
@@ -295,6 +311,10 @@ is_not_a_type = (type)->
         
         walk(t.a, ctx)
         walk(t.b, ctx)
+        t.type
+      when "Un_op"
+        # TODO bruteforce
+        walk(t.a, ctx)
         t.type
       
       when "Field_access"

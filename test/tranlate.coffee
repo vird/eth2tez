@@ -37,7 +37,7 @@ describe 'translate section', ()->
         contractStorage.value := 1n;
       } with (contractStorage);
     
-    function main (const dummy_int : nat; const contractStorage : state) : (state) is
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
       block {
         skip
       } with (contractStorage);
@@ -80,7 +80,7 @@ describe 'translate section', ()->
         };
       } with (ret, contractStorage);
     
-    function main (const dummy_int : nat; const contractStorage : state) : (state) is
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
       block {
         skip
       } with (contractStorage);
@@ -114,14 +114,14 @@ describe 'translate section', ()->
         end;
       } with (y, contractStorage);
     
-    function main (const dummy_int : nat; const contractStorage : state) : (state) is
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
       block {
         skip
       } with (contractStorage);
     """#"
     make_test text_i, text_o
   
-  it 'int ops', ()->
+  it 'uint ops', ()->
     text_i = """
     pragma solidity ^0.5.11;
 
@@ -164,10 +164,90 @@ describe 'translate section', ()->
           c := bitwise_xor(a, b);
         } with (c, contractStorage);
       
-      function main (const dummy_int : nat; const contractStorage : state) : (state) is
+      function main (const dummy_int : int; const contractStorage : state) : (state) is
         block {
           skip
         } with (contractStorage);
+    """
+    make_test text_i, text_o
+  
+  it 'int ops', ()->
+    text_i = """
+    pragma solidity ^0.5.11;
+    
+    contract Forer {
+      int public value;
+      
+      function forer() public returns (int yourMom) {
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        c = -c;
+        c = a + b;
+        c = a - b;
+        c = a * b;
+        c = a / b;
+        c = a % b;
+        c = a & b;
+        c = a | b;
+        c = a ^ b;
+        return c;
+      }
+    }
+    """#"
+    text_o = """
+      type state is record
+        value: int;
+      end;
+      
+      function forer (const contractStorage : state) : (int * state) is
+        block {
+          const a : int = 0;
+          const b : int = 0;
+          const c : int = 0;
+          c := -(c);
+          c := (a + b);
+          c := (a - b);
+          c := (a * b);
+          c := (a / b);
+          c := (a mod b);
+          c := bitwise_and(a, b);
+          c := bitwise_or(a, b);
+          c := bitwise_xor(a, b);
+        } with (c, contractStorage);
+      
+      function main (const dummy_int : int; const contractStorage : state) : (state) is
+        block {
+          skip
+        } with (contractStorage);
+    """
+    make_test text_i, text_o
+  it 'a[b]', ()->
+    text_i = """
+    pragma solidity ^0.5.11;
+
+    contract Forer {
+      mapping (address => uint) balances;
+      
+      function forer(address owner) public returns (uint yourMom) {
+        return balances[owner];
+      }
+    }
+    """#"
+    text_o = """
+    type state is record
+      balances: map(address, nat);
+    end;
+    
+    function forer (const owner : address; const contractStorage : state) : (nat * state) is
+      block {
+        skip
+      } with ((case contractStorage.balances[owner] of | None -> 0n | Some(x) -> x end), contractStorage);
+    
+    function main (const dummy_int : int; const contractStorage : state) : (state) is
+      block {
+        skip
+      } with (contractStorage);
     """
     make_test text_i, text_o
   

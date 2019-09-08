@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+require("../lib/console_tool.js")

@@ -71,8 +71,8 @@ describe 'translate section', ()->
     
     function ifer (const contractStorage : state) : (nat * state) is
       block {
-        const x : nat = 5;
-        const ret : nat = 0;
+        const x : nat = 5n;
+        const ret : nat = 0n;
         if (x = 5) then block {
           ret := (contractStorage.value + x);
         } else block {
@@ -108,8 +108,8 @@ describe 'translate section', ()->
     
     function forer (const contractStorage : state) : (nat * state) is
       block {
-        const y : nat = 0;
-        if (!(y = 0)) begin
+        const y : nat = 0n;
+        if (not (y = 0n)) begin
           fail("wtf");
         end;
       } with (y, contractStorage);
@@ -151,9 +151,9 @@ describe 'translate section', ()->
       
       function forer (const contractStorage : state) : (nat * state) is
         block {
-          const a : nat = 0;
-          const b : nat = 0;
-          const c : nat = 0;
+          const a : nat = 0n;
+          const b : nat = 0n;
+          const c : nat = 0n;
           c := (a + b);
           c := (a - b);
           c := (a * b);

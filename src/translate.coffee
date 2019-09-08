@@ -1,6 +1,6 @@
 config = require './config'
 Type   = require('type')
-mod_ast= require('../src/ast')
+mod_ast= require('./ast')
 require 'fy/codegen'
 module = @
 

@@ -326,7 +326,7 @@ module.exports = (root)->
   main_fn = new ast.Fn_decl_multiret
   main_fn.name = 'main'
   main_fn.arg_name_list.push 'dummy_int', config.contractStorage
-  main_fn.type_i = new Type "function<t_uint256,#{config.storage}>"
+  main_fn.type_i = new Type "function<t_int256,#{config.storage}>"
   main_fn.type_o = new Type "function<#{config.storage}>"
   main_fn.scope  = new ast.Scope
   

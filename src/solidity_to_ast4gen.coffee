@@ -319,6 +319,13 @@ module.exports = (root)->
             last.t_list.push t
         else
           throw new Error("bad type node.constructor.name=#{node.constructor.name}")
+  
+  if storage_decl.scope.list.length == 0
+    storage_decl.scope.list.push tmp = new ast.Var_decl
+    tmp.name = 'dummy'
+    tmp.type = new Type 't_int256'
+  
+  
   ret = new ast.Scope
   ret.list.push storage_decl
   ret.list.append fn_list

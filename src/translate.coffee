@@ -99,6 +99,7 @@ class @Gen_context
   tmp_idx     : 0
   sink_list   : []
   lvalue      : false
+  trim_expr   : ''
   
   constructor:()->
     @fn_hash    = {}
@@ -237,6 +238,8 @@ var_name_trans = (name)->
         arg_list.push config.contractStorage
         tmp_var = "tmp_#{ctx.tmp_idx++}"
         ctx.sink_list.push "const #{tmp_var} : (#{type_jl.join ' * '}) = #{fn}(#{arg_list.join ', '})"
+        ctx.sink_list.push "#{config.contractStorage} := #{tmp_var}.1"
+        ctx.trim_expr = tmp_var
         tmp_var
       
     # ###################################################################################################
@@ -254,6 +257,9 @@ var_name_trans = (name)->
         for sink in ctx.sink_list
           append sink
         ctx.sink_list.clear()
+        if ctx.trim_expr == t
+          ctx.trim_expr = ''
+          continue
         append t
         
       

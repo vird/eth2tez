@@ -44,7 +44,7 @@ type2default_value = (type)->
 
 @bin_op_name_map =
   ADD : '+'
-  SUB : '-'
+  # SUB : '-'
   MUL : '*'
   DIV : '/'
   MOD : 'mod'
@@ -78,6 +78,12 @@ type2default_value = (type)->
       val = type2default_value ast.type
       "(case #{a}[#{b}] of | None -> #{val} | Some(x) -> x end)"
       # "get_force(#{b}, #{a})"
+  # nat - nat edge case
+  SUB : (a, b, ctx, ast)->
+    if ast.a.type.main == 't_uint256' and ast.b.type.main == 't_uint256'
+      "abs(#{a} - #{b})"
+    else
+      "(#{a} - #{b})"
 
 @un_op_name_cb_map =
   MINUS   : (a)->"-(#{a})"

@@ -4,7 +4,7 @@
 
 ligo dry-run $1 --syntax pascaligo $2 0 "record
     minter = (\"tz1gSkRdKZiEyDXWArRSBLjpUaFr5ReLMy1w\": address);
-    balances = ((map end) : map(address, int))
+    balances = ((map end) : map(address, nat))
     end
 "
 

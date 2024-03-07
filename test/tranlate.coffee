@@ -155,7 +155,7 @@ describe 'translate section', ()->
           const b : nat = 0n;
           const c : nat = 0n;
           c := (a + b);
-          c := (a - b);
+          c := abs(a - b);
           c := (a * b);
           c := (a / b);
           c := (a mod b);
@@ -373,7 +373,7 @@ describe 'translate section', ()->
     """#"
     text_o = """
     type state is record
-      
+      dummy: int;
     end;
     
     function call_me (const a : int; const contractStorage : state) : (int * state) is
@@ -384,6 +384,7 @@ describe 'translate section', ()->
     function forer (const a : int; const contractStorage : state) : (int * state) is
       block {
         const tmp_0 : (int * state) = call_me(a, contractStorage);
+        contractStorage := tmp_0.1;
       } with (tmp_0, contractStorage);
     
     function main (const dummy_int : int; const contractStorage : state) : (state) is
